@@ -1,30 +1,15 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import { genratePipeFunc } from '@/utils/common'
+import { permissionRoutes, addProgressToRouter } from './handleOfRouter'
+import { router, FinalRoute, asnycRoutes, WihteList } from './global.router'
 
-Vue.use(VueRouter);
+// 生成流程处理路由的函数
+const HandlerOfRouterPipeFunc = genratePipeFunc(
+  // 过滤权限
+  permissionRoutes(asnycRoutes, WihteList, FinalRoute),
+  addProgressToRouter()
+)
 
-const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  }
-];
+// 将当前router经过流程函数处理返回新router
+const withPipeRouter = HandlerOfRouterPipeFunc(router)
 
-const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes
-});
-
-export default router;
+export default withPipeRouter
