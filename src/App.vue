@@ -1,12 +1,22 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Home</router-link>
     </div>
-    <router-view />
+    <baise-layout />
   </div>
 </template>
+
+<script>
+import BaiseLayout from '@/layout/BaiseLayout'
+
+export default {
+  name: 'App',
+  components: {
+    BaiseLayout
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
