@@ -9,7 +9,7 @@ export default {
     isLeaf: false
   },
   component: {
-    render: h => h('router-view')
+    render: h => h('baise-layout')
   },
   redirect: '/dashboard/index',
   children: [

@@ -12,6 +12,9 @@ import './assets/icon'
 // 全局组件
 import AllComps from './components'
 Vue.use(AllComps)
+// 全局layout
+import AllLayout from './layout'
+Vue.use(AllLayout)
 // 组件
 import Plugins from './plugins/element-ui'
 Vue.use(Plugins)

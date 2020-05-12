@@ -10,7 +10,9 @@ import {
   MenuItemGroup,
   MenuItem,
   RadioGroup,
-  RadioButton
+  RadioButton,
+  Drawer,
+  Switch
 } from 'element-ui'
 let AllComp = {
   Button,
@@ -24,7 +26,9 @@ let AllComp = {
   MenuItemGroup,
   MenuItem,
   RadioGroup,
-  RadioButton
+  RadioButton,
+  Drawer,
+  Switch
 }
 // 注册组件
 export default {

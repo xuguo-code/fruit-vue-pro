@@ -1,17 +1,15 @@
 <template>
   <div id="app">
-    <baise-layout />
+    <!-- 视图展示 -->
+    <router-view />
+    <!-- 设置抽屉 -->
+    <options-drawer />
   </div>
 </template>
 
 <script>
-import BaiseLayout from '@/layout/BaiseLayout'
-
 export default {
-  name: 'App',
-  components: {
-    BaiseLayout
-  }
+  name: 'App'
 }
 </script>
 

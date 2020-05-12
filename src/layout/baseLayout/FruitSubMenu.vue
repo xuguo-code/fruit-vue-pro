@@ -31,11 +31,6 @@ export default {
       required: true
     }
   },
-  watch: {
-    isCollapse(c) {
-      console.log(c)
-    }
-  },
   methods: {
     jumpTo(path) {
       this.$router.push(path)
@@ -45,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.svg-icon {
-  margin: 0 10px 0 0;
+.svg-icon + span {
+  margin: 0 0 0 10px;
 }
 </style>
