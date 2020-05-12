@@ -19,10 +19,10 @@ export default {
       path: 'index',
       name: 'HomeIndex',
       meta: {
-        title: '首页',
+        title: '首页1',
         icon: 'index-home',
         showInMenu: true,
-        isLeaf: false
+        isLeaf: true
       },
       component: Index
     },
@@ -30,10 +30,10 @@ export default {
       path: 'index2',
       name: 'HomeIndex2',
       meta: {
-        title: '首页',
+        title: '首页2',
         icon: 'index-home',
         showInMenu: true,
-        isLeaf: false
+        isLeaf: true
       },
       component: Index2
     }

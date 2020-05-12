@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="footer-wrap">
     尾部
   </div>
 </template>

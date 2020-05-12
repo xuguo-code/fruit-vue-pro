@@ -1,24 +1,46 @@
 <template>
   <div>
-    <fruit-header />
-    <fruit-slide />
-    <router-view />
-    <fruit-footer />
+    <el-container class="content-wrap">
+      <!-- 头部 -->
+      <el-header>
+        <fruit-header />
+      </el-header>
+      <el-container>
+        <!-- 侧边 -->
+        <el-aside width="auto">
+          <fruit-aside />
+        </el-aside>
+        <!-- 主要部分 -->
+        <el-container>
+          <el-main>
+            <router-view />
+          </el-main>
+          <!-- 尾部 -->
+          <el-footer>
+            <fruit-footer />
+          </el-footer>
+        </el-container>
+      </el-container>
+    </el-container>
   </div>
 </template>
 
 <script>
 import FruitHeader from './baseLayout/FruitHeader'
 import FruitFooter from './baseLayout/FruitFooter'
-import FruitSlide from './baseLayout/FruitSlide'
+import FruitAside from './baseLayout/FruitAside'
 export default {
   name: 'BaiseLayout',
   components: {
     FruitHeader,
-    FruitSlide,
+    FruitAside,
     FruitFooter
   }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.content-wrap {
+  height: 100vh;
+}
+</style>

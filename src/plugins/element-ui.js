@@ -1,5 +1,31 @@
-import { Button } from 'element-ui'
-let AllComp = { Button }
+import {
+  Button,
+  Container,
+  Header,
+  Aside,
+  Main,
+  Footer,
+  Menu,
+  Submenu,
+  MenuItemGroup,
+  MenuItem,
+  RadioGroup,
+  RadioButton
+} from 'element-ui'
+let AllComp = {
+  Button,
+  Container,
+  Header,
+  Aside,
+  Main,
+  Footer,
+  Menu,
+  Submenu,
+  MenuItemGroup,
+  MenuItem,
+  RadioGroup,
+  RadioButton
+}
 // 注册组件
 export default {
   install(Vue) {
