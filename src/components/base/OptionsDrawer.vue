@@ -8,7 +8,7 @@
       <section class="option-wrap">
         <div class="option-item">
           <span>收起侧边菜单：</span>
-          <el-switch :value="$store.getters.menuIsCollapse" @change="themeModeChange"></el-switch>
+          <el-switch :value="isCollapse" @change="themeModeChange"></el-switch>
         </div>
       </section>
     </el-drawer>
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'OptionsDrawer',
   data() {
@@ -23,9 +25,14 @@ export default {
       drawer: false
     }
   },
+  computed: {
+    ...mapGetters('global', {
+      isCollapse: 'menuIsCollapse'
+    })
+  },
   methods: {
     themeModeChange() {
-      this.$store.commit('setMenuCollapse')
+      this.$store.commit('global/setMenuCollapse')
     }
   }
 }

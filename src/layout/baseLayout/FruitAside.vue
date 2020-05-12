@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import FruitSubMenu from './FruitSubMenu'
 
 export default {
@@ -31,8 +32,11 @@ export default {
     }
   },
   computed: {
-    isCollapse: vm => vm.$store.getters.menuIsCollapse,
-    routes: vm => (vm.$router?.options?.routes || []).concat(vm.$store?.getters?.routes || []),
+    ...mapGetters('global', {
+      isCollapse: 'menuIsCollapse',
+      authRoutes: 'routes'
+    }),
+    routes: vm => (vm.$router?.options?.routes || []).concat(vm.authRoutes || []),
     activePath: vm => vm.$route.fullPath
   },
   methods: {

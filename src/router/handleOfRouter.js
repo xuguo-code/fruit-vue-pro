@@ -36,7 +36,7 @@ export const permissionRoutes = (rolesRoutes = [], wihteList = [], finalRoutes =
           next('/')
         } else {
           // 获取用户角色
-          const hasRoles = store.getters['hasRole']
+          const hasRoles = store.getters['user/hasRole']
           if (hasRoles && hasRoles.length > 0) {
             // 存在且有角色 说明已经生成过角色路由了
             next()
@@ -47,11 +47,11 @@ export const permissionRoutes = (rolesRoutes = [], wihteList = [], finalRoutes =
               // 生成动态路由
               const asyncRoutes = genrateAsnycRoutes(cacheRoutes, roles)
               // 存储权限路由
-              store.commit('setRoutes', asyncRoutes)
+              store.commit('global/setRoutes', asyncRoutes)
               // 添加过滤权限后的路由表
               router.addRoutes([...asyncRoutes, ...cacheFinalRoutes])
               // 设置角色
-              store.commit('setHasRole')
+              store.commit('user/setHasRole')
               // 跳转
               next({ ...to, replace: true })
             } catch (e) {
