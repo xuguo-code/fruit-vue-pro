@@ -46,6 +46,6 @@ export default {
 
 <style lang="scss" scoped>
 .svg-icon {
-  margin: 0 5px 0 0;
+  margin: 0 10px 0 0;
 }
 </style>

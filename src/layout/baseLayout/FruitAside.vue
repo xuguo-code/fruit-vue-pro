@@ -85,5 +85,8 @@ export default {
   .el-menu-item {
     text-align: left;
   }
+  .svg-icon {
+    margin: 0 10px 0 0;
+  }
 }
 </style>
