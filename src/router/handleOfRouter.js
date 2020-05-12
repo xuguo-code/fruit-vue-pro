@@ -46,6 +46,8 @@ export const permissionRoutes = (rolesRoutes = [], wihteList = [], finalRoutes =
               const roles = ['admin']
               // 生成动态路由
               const asyncRoutes = genrateAsnycRoutes(cacheRoutes, roles)
+              // 存储权限路由
+              store.commit('setRoutes', asyncRoutes)
               // 添加过滤权限后的路由表
               router.addRoutes([...asyncRoutes, ...cacheFinalRoutes])
               // 设置角色
@@ -114,8 +116,8 @@ export const addProgressToRouter = () => router => {
   router.beforeEach((to, from, next) => {
     if (to.path !== from.path) {
       NProgress.start()
-      next()
     }
+    next()
   })
   router.afterEach(() => {
     NProgress.done()
