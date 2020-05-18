@@ -4,24 +4,21 @@ import router from './router'
 import store from './store'
 // 进度条样式
 import 'nprogress/nprogress.css'
-// 扩展
 // svg
 import './assets/icon'
+// 扩展
+import { composeVueUse } from './utils/common'
 // fragment
 import Fragment from 'vue-fragment'
-Vue.use(Fragment.Plugin)
 // 全局组件
 import AllComps from './components'
-Vue.use(AllComps)
 // 全局layout
 import AllLayout from './layout'
-Vue.use(AllLayout)
 // 组件
 import Plugins from './plugins/element-ui'
-Vue.use(Plugins)
 // 主题混入
 import ThemeMixin from './mixins/themeMixin'
-Vue.use(ThemeMixin)
+composeVueUse(Vue)(Fragment.Plugin, AllComps, AllLayout, Plugins, ThemeMixin)
 
 Vue.config.productionTip = false
 

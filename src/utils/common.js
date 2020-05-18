@@ -9,3 +9,15 @@ export function genratePipeFunc(...funcs) {
   if (funcs.length === 1) (...args) => [0](...args)
   return funcs.reduce((left, right) => (...args) => right(left(...args)))
 }
+
+/**
+ * 聚合 Vue.use
+ */
+export function composeVueUse(Vue) {
+  let cacheVue = Vue
+  return (...plugins) => {
+    plugins.forEach(plugin => {
+      cacheVue.use(plugin)
+    })
+  }
+}
