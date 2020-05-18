@@ -29,5 +29,13 @@ module.exports = {
       .loader('svg-sprite-loader')
       .options({ symbolId: 'icon-[name]' })
       .end()
+  },
+  // sass处理
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `@import "~@/styles/index.scss";`
+      }
+    }
   }
 }
