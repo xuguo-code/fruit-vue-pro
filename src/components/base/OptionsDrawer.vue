@@ -7,8 +7,10 @@
       <h2>配置</h2>
       <section class="option-wrap">
         <div class="option-item">
-          <span>收起侧边菜单：</span>
-          <el-switch :value="isCollapse" @change="themeModeChange"></el-switch>
+          <span>主题色：</span>
+          <el-radio-group v-model="themeMode" size="small">
+            <el-radio-button v-for="t in themes" :key="t" :label="t"></el-radio-button>
+          </el-radio-group>
         </div>
       </section>
     </el-drawer>
@@ -16,23 +18,22 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'OptionsDrawer',
   data() {
     return {
-      drawer: false
+      drawer: false,
+      themes: ['dark', 'light']
     }
   },
   computed: {
-    ...mapGetters('global', {
-      isCollapse: 'menuIsCollapse'
-    })
-  },
-  methods: {
-    themeModeChange() {
-      this.$store.commit('global/setMenuCollapse')
+    themeMode: {
+      get() {
+        return this.$store.getters['global/themeMode'] || 'light'
+      },
+      set(mode) {
+        this.$store.dispatch('global/setThemeMode', mode)
+      }
     }
   }
 }
@@ -59,6 +60,9 @@ export default {
       display: flex;
       align-items: center;
       text-align: left;
+      & + .option-item {
+        margin: 20px 0 0 0;
+      }
     }
   }
 }
