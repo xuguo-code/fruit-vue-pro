@@ -1,32 +1,35 @@
 let state = {
   routes: [],
-  theme: {
-    mode: 'light'
-  },
-  menuIsCollapse: false
+  theme: 'light',
+  menuIsCollapse: false,
+  locale: 'zhCN'
 }
 
 let mutations = {
   setRoutes(state, r) {
     return (state.routes = r)
   },
-  setThemeMode(state, mode) {
-    return (state.theme.mode = mode)
-  },
   setMenuCollapse(state) {
     return (state.menuIsCollapse = !state.menuIsCollapse)
+  },
+  setLocale(state, lang) {
+    return (state.locale = lang)
   }
 }
+
+let actions = {}
 
 let getters = {
   routes: state => state.routes,
   theme: state => state.theme,
-  menuIsCollapse: state => state.menuIsCollapse
+  menuIsCollapse: state => state.menuIsCollapse,
+  locale: state => state.locale
 }
 
 export default {
   namespaced: true,
   state,
   mutations,
-  getters
+  getters,
+  actions
 }

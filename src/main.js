@@ -2,13 +2,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-// 引入公共样式
-import './styles/index.scss'
 // 进度条样式
 import 'nprogress/nprogress.css'
 // 扩展
 // svg
 import './assets/icon'
+// fragment
+import Fragment from 'vue-fragment'
+Vue.use(Fragment.Plugin)
 // 全局组件
 import AllComps from './components'
 Vue.use(AllComps)
@@ -18,6 +19,9 @@ Vue.use(AllLayout)
 // 组件
 import Plugins from './plugins/element-ui'
 Vue.use(Plugins)
+// 主题混入
+import ThemeMixin from './mixins/themeMixin'
+Vue.use(ThemeMixin)
 
 Vue.config.productionTip = false
 
