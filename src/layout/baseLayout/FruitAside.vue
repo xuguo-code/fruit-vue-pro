@@ -1,18 +1,7 @@
 <template>
-  <div :class="['aside-wrap', isCollapse ? '' : 'const-width']">
+  <div class="aside-wrap">
     <el-menu class="aside-menu" :default-active="activePath" :collapse="isCollapse">
-      <template v-for="menu in menus">
-        <el-menu-item
-          v-if="menu.meta.isLeaf"
-          :key="menu.path"
-          :index="menu.path"
-          @click="jumpTo(menu.path)"
-        >
-          <svg-icon :icon-name="menu.meta.icon" />
-          <span>{{ menu.meta.title }}</span>
-        </el-menu-item>
-        <fruit-sub-menu :key="menu.path" :menu-info="menu" />
-      </template>
+      <fruit-sub-menu v-for="menu in menus" :key="menu.path" :menu-info="menu" />
     </el-menu>
   </div>
 </template>
@@ -58,9 +47,6 @@ export default {
           return memo
         }
       }, [])
-    },
-    jumpTo(path) {
-      this.$router.push(path)
     }
   },
   mounted() {
@@ -71,16 +57,17 @@ export default {
 
 <style lang="scss" scoped>
 .aside-wrap {
-  display: inline-block;
   height: 100%;
-  width: auto;
   text-align: left;
   overflow: hidden;
-  &.const-width {
-    width: 210px;
-  }
   .aside-menu {
     height: 100%;
+    &:not(.el-menu--collapse) {
+      width: 200px;
+    }
+  }
+  /deep/ .el-menu--collapse {
+    width: 54px;
   }
   .svg-icon + span {
     margin: 0 0 0 10px;

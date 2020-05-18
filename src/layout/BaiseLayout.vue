@@ -13,6 +13,7 @@
         <!-- 主要部分 -->
         <el-container>
           <el-main>
+            <fruit-main-header />
             <router-view />
           </el-main>
           <!-- 尾部 -->
@@ -29,12 +30,15 @@
 import FruitHeader from './baseLayout/FruitHeader'
 import FruitFooter from './baseLayout/FruitFooter'
 import FruitAside from './baseLayout/FruitAside'
+import FruitMainHeader from './baseLayout/FruitMainheader'
+
 export default {
   name: 'BaiseLayout',
   components: {
     FruitHeader,
     FruitAside,
-    FruitFooter
+    FruitFooter,
+    FruitMainHeader
   }
 }
 </script>
@@ -42,5 +46,8 @@ export default {
 <style lang="scss" scoped>
 .content-wrap {
   height: 100vh;
+  .el-main {
+    padding: 0 20px 20px 20px;
+  }
 }
 </style>
