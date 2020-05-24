@@ -16,7 +16,9 @@ import AllComps from './components'
 import AllLayout from './layout'
 // 组件
 import Plugins from './plugins/element-ui'
-composeVueUse(Vue)(Fragment.Plugin, AllComps, AllLayout, Plugins)
+// 主题
+import ThemeMixin from './mixins/themeMixin'
+composeVueUse(Vue)(Fragment.Plugin, AllComps, AllLayout, Plugins, ThemeMixin)
 
 Vue.config.productionTip = false
 

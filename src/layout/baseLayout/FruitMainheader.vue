@@ -1,7 +1,11 @@
 <template>
   <header class="main-header">
-    <aside class="main-header-collapse" @click="menuCollapseChange">
-      <svg-icon class="menu-btn" :icon-name="isCollapse ? 'menu-open' : 'menu-close'" />
+    <aside :class="['main-header-collapse']" @click="menuCollapseChange">
+      <svg-icon
+        class="menu-btn"
+        :fill="$_theme_mixin.activeTextColor"
+        :icon-name="isCollapse ? 'menu-open' : 'menu-close'"
+      />
     </aside>
   </header>
 </template>
@@ -35,7 +39,6 @@ export default {
     line-height: 36px;
     text-align: center;
     cursor: pointer;
-    color: $light-active-text-color;
   }
 }
 </style>

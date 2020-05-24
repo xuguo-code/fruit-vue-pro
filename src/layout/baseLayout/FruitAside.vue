@@ -4,9 +4,9 @@
       class="aside-menu"
       :default-active="activePath"
       :collapse="isCollapse"
-      :background-color="theme.backgroundColor"
-      :text-color="theme.textColor"
-      :active-text-color="theme.activeTextColor"
+      :background-color="$_theme_mixin.backgroundColor"
+      :text-color="$_theme_mixin.textColor"
+      :active-text-color="$_theme_mixin.activeTextColor"
     >
       <fruit-sub-menu v-for="menu in menus" :key="menu.path" :menu-info="menu" />
     </el-menu>
@@ -30,8 +30,7 @@ export default {
   computed: {
     ...mapGetters('global', {
       isCollapse: 'menuIsCollapse',
-      authRoutes: 'routes',
-      theme: 'theme'
+      authRoutes: 'routes'
     }),
     routes: vm => (vm.$router?.options?.routes || []).concat(vm.authRoutes || []),
     activePath: vm => vm.$route.fullPath
