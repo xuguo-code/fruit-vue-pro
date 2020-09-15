@@ -83,7 +83,7 @@ export const permissionRoutes = (rolesRoutes = [], wihteList = [], finalRoutes =
 }
 /**
  * @desc 过滤当前可访问路由表
- * @param {权限路由表}} routes
+ * @param {权限路由表} routes
  * @param {当前角色} roles
  */
 function genrateAsnycRoutes(routes, roles) {
@@ -123,4 +123,24 @@ export const addProgressToRouter = () => router => {
     NProgress.done()
   })
   return router
+}
+/**
+ * 为每个模块动态注册 vuex
+ */
+export const dynamicVuexRegisterInRouter = () => {
+  let cacheMap = new Map()
+  return router => {
+    router.beforeEach((to, from, next) => {
+      const moduleRouteMeta = to.matched[0].meta
+      const vuexModuleName = moduleRouteMeta.vuex
+      if (!cacheMap.get(vuexModuleName)) {
+        const vuex = require(`@/store/modules/${vuexModuleName}.js`)
+        console.log(vuex)
+        cacheMap.set(vuexModuleName, true)
+      }
+
+      next()
+    })
+    return router
+  }
 }

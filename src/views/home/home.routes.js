@@ -1,5 +1,5 @@
-import Index from './index.vue'
-import Index2 from './index2.vue'
+const Index = () => import(/* webpackChunkName: "home" */ './index')
+const Index2 = () => import(/* webpackChunkName: "home" */ './index2')
 
 export default {
   path: '/',
@@ -8,10 +8,11 @@ export default {
     title: '首页',
     icon: 'home',
     showInMenu: true,
-    isLeaf: false
+    isLeaf: false,
+    vuex: 'user'
   },
   component: {
-    render: h => h('baise-layout')
+    render: h => h('router-view')
   },
   redirect: '/index',
   children: [
@@ -22,7 +23,8 @@ export default {
         title: '首页1',
         icon: 'index-home',
         showInMenu: true,
-        isLeaf: true
+        isLeaf: true,
+        hideInBreadcrumb: true
       },
       component: Index
     },

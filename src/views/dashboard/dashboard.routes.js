@@ -1,3 +1,5 @@
+const Index = () => import(/* webpackChunkName: "dashboard" */ './index')
+
 export default {
   path: '/dashboard',
   name: 'dashboard',
@@ -9,7 +11,7 @@ export default {
     isLeaf: false
   },
   component: {
-    render: h => h('baise-layout')
+    render: h => h('router-view')
   },
   redirect: '/dashboard/index',
   children: [
@@ -22,7 +24,7 @@ export default {
         showInMenu: true,
         isLeaf: true
       },
-      component: () => import(/* webpackChunkName: "dashboard" */ './index')
+      component: Index
     }
   ]
 }
