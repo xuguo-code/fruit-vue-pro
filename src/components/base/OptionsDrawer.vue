@@ -26,7 +26,7 @@ export default {
   name: 'OptionsDrawer',
   data() {
     return {
-      drawer: true,
+      drawer: false,
       themes: ['dark', 'light']
     }
   },

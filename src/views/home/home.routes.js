@@ -9,7 +9,7 @@ export default {
     icon: 'home',
     showInMenu: true,
     isLeaf: false,
-    vuex: 'user'
+    vuex: 'home'
   },
   component: {
     render: h => h('router-view')
