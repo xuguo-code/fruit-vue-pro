@@ -1,10 +1,10 @@
 <template>
-  <div :class="['header-wrap', `header-wrap--${$_themeMode_mixin}`]">
+  <header :class="['header-wrap', `header-wrap--${$_themeMode_mixin}`]">
     <div class="left" @click="backToHome">
       <img :src="logoImg" />
       <h2>Fruit-vue-pro</h2>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -31,8 +31,8 @@ export default {
 .header-wrap {
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
-  padding: 0 30px;
+  height: 60px;
+  padding: 0 20px;
   border-bottom: solid 1px $border-color;
   &--dark {
     background: $dark-background-color;

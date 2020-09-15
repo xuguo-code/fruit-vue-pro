@@ -1,7 +1,7 @@
 <template>
-  <div class="footer-wrap">
+  <footer class="footer-wrap">
     尾部
-  </div>
+  </footer>
 </template>
 <script>
 export default {}

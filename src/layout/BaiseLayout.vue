@@ -1,27 +1,21 @@
 <template>
   <div>
-    <el-container class="content-wrap">
-      <!-- 头部 -->
-      <el-header>
-        <fruit-header />
-      </el-header>
-      <el-container>
-        <!-- 侧边 -->
-        <el-aside width="auto">
-          <fruit-aside />
-        </el-aside>
-        <!-- 主要部分 -->
-        <el-container>
-          <el-main>
-            <fruit-main-header />
-            <router-view />
-          </el-main>
+    <!-- 头部 -->
+    <fruit-header />
+    <el-container class="main-wrap">
+      <!-- 侧边 -->
+      <fruit-aside />
+      <!-- 主要部分 -->
+      <section class="content-wrap">
+        <!-- main 头部 -->
+        <fruit-main-header />
+        <el-main>
+          <!-- 内容区域 -->
+          <router-view />
           <!-- 尾部 -->
-          <el-footer>
-            <fruit-footer />
-          </el-footer>
-        </el-container>
-      </el-container>
+        </el-main>
+        <fruit-footer />
+      </section>
     </el-container>
   </div>
 </template>
@@ -44,13 +38,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.content-wrap {
-  height: 100vh;
-  .el-main {
+.main-wrap {
+  position: fixed;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .content-wrap {
+    flex: 1;
     padding: 0 20px 20px 20px;
-  }
-  .el-header {
-    padding: 0;
+    overflow: hidden auto;
+    background: #f0f2f5;
+    .el-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #fff;
+    }
   }
 }
 </style>

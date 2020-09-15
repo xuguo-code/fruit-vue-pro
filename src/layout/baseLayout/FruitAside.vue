@@ -1,16 +1,25 @@
 <template>
-  <div class="aside-wrap">
-    <el-menu
-      class="aside-menu"
-      :default-active="activePath"
-      :collapse="isCollapse"
-      :background-color="$_theme_mixin.backgroundColor"
-      :text-color="$_theme_mixin.textColor"
-      :active-text-color="$_theme_mixin.activeTextColor"
-    >
-      <fruit-sub-menu v-for="menu in menus" :key="menu.path" :menu-info="menu" />
-    </el-menu>
-  </div>
+  <aside class="aside-wrap">
+    <div class="aside-menu-wrap">
+      <el-menu
+        class="aside-menu"
+        :default-active="activePath"
+        :collapse="isCollapse"
+        :background-color="$_theme_mixin.backgroundColor"
+        :text-color="$_theme_mixin.textColor"
+        :active-text-color="$_theme_mixin.activeTextColor"
+      >
+        <fruit-sub-menu v-for="menu in menus" :key="menu.path" :menu-info="menu" />
+      </el-menu>
+    </div>
+    <div :class="['main-header-collapse']" @click="menuCollapseChange">
+      <svg-icon
+        class="menu-btn"
+        :fill="$_theme_mixin.activeTextColor"
+        :icon-name="isCollapse ? 'menu-open' : 'menu-close'"
+      />
+    </div>
+  </aside>
 </template>
 
 <script>
@@ -36,6 +45,7 @@ export default {
     activePath: vm => vm.$route.fullPath
   },
   methods: {
+    // 标准化菜单数据
     getMemuData(routes, parentPath = '') {
       return routes.reduce((memo, route) => {
         if (route?.meta?.showInMenu) {
@@ -54,6 +64,10 @@ export default {
           return memo
         }
       }, [])
+    },
+    // 收起打开菜单
+    menuCollapseChange() {
+      this.$store.commit('global/setMenuCollapse')
     }
   },
   mounted() {
@@ -65,19 +79,40 @@ export default {
 <style lang="scss" scoped>
 .aside-wrap {
   height: 100%;
+  display: flex;
+  flex-direction: column;
   text-align: left;
-  overflow: hidden;
-  .aside-menu {
-    height: 100%;
-    &:not(.el-menu--collapse) {
-      width: 200px;
+  border-right: 1px solid #e6e6e6;
+  .aside-menu-wrap {
+    flex: 1 1 0%;
+    width: auto;
+    overflow: hidden auto;
+    .aside-menu {
+      box-sizing: border-box;
+      &:not(.el-menu--collapse) {
+        width: 200px;
+      }
+      /deep/ .el-menu--collapse {
+        width: 54px;
+      }
+      .svg-icon + span {
+        margin: 0 0 0 10px;
+      }
+    }
+    /deep/ .el-menu,
+    .el-submenu__title {
+      border: none;
     }
   }
-  /deep/ .el-menu--collapse {
-    width: 54px;
-  }
-  .svg-icon + span {
-    margin: 0 0 0 10px;
+  .main-header-collapse {
+    flex: 0 0 50px;
+    box-sizing: border-box;
+    height: 16px;
+    width: 100%;
+    padding: 0 0 0 20px;
+    line-height: 50px;
+    cursor: pointer;
+    border-top: 1px solid #e6e6e6;
   }
 }
 </style>
