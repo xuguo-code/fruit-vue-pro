@@ -7,6 +7,9 @@
         :icon-name="isCollapse ? 'menu-open' : 'menu-close'"
       />
     </aside>
+    <div class="breadcrumb-wrap">
+      <fruit-breadcrumb />
+    </div>
   </header>
 </template>
 
@@ -30,14 +33,15 @@ export default {
 
 <style lang="scss" scoped>
 .main-header {
+  display: flex;
+  align-items: center;
   width: 100%;
+  height: 40px;
   text-align: left;
   .main-header-collapse {
-    display: inline-block;
-    height: 36px;
-    width: 36px;
-    line-height: 36px;
-    text-align: center;
+    margin: 0 20px 0 0;
+    height: 16px;
+    width: 16px;
     cursor: pointer;
   }
 }
