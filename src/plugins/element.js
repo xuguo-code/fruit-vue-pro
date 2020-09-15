@@ -11,7 +11,6 @@ import {
   MenuItem,
   RadioGroup,
   RadioButton,
-  Drawer,
   Switch,
   Breadcrumb,
   BreadcrumbItem
@@ -29,7 +28,6 @@ let AllComp = {
   MenuItem,
   RadioGroup,
   RadioButton,
-  Drawer,
   Switch,
   Breadcrumb,
   BreadcrumbItem

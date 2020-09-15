@@ -12,8 +12,10 @@ import AllComps from './components'
 // 全局layout
 import AllLayout from './layout'
 // 组件
-import Plugins from './plugins/element-ui'
+import Plugins from './plugins/element'
 // 主题
 import ThemeMixin from './mixins/themeMixin'
+// 指令
+import AllDirectives from './directives'
 // 插件聚合安装
-composeVueUse(Vue)(Fragment.Plugin, AllComps, AllLayout, Plugins, ThemeMixin)
+composeVueUse(Vue)(Fragment.Plugin, AllComps, AllLayout, Plugins, ThemeMixin, AllDirectives)
