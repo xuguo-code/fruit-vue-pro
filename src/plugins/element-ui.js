@@ -12,7 +12,9 @@ import {
   RadioGroup,
   RadioButton,
   Drawer,
-  Switch
+  Switch,
+  Breadcrumb,
+  BreadcrumbItem
 } from 'element-ui'
 let AllComp = {
   Button,
@@ -28,7 +30,9 @@ let AllComp = {
   RadioGroup,
   RadioButton,
   Drawer,
-  Switch
+  Switch,
+  Breadcrumb,
+  BreadcrumbItem
 }
 // 注册组件
 export default {
