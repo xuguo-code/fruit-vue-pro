@@ -1,0 +1,11 @@
+<template>
+  <div>{{moduleName}}/index</div>
+</template>
+
+<script>
+export default {
+  name: '{{moduleName}}Index'
+}
+</script>
+
+<style lang="scss" scoped></style>

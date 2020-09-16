@@ -1,0 +1,30 @@
+const Index = () => import(/* webpackChunkName: "{{moduleName}}" */ './Index')
+
+export default {
+  path: '/{{moduleName}}',
+  name: '{{moduleName}}',
+  meta: {
+    title: '{{moduleName}}',
+    icon: '{{moduleName}}',
+    showInMenu: true,
+    isLeaf: false,
+    vuex: '{{moduleName}}'
+  },
+  component: {
+    render: h => h('router-view')
+  },
+  redirect: '/{{moduleName}}/index',
+  children: [
+    {
+      path: 'index',
+      name: '{{moduleName}}Index',
+      meta: {
+        title: '首页',
+        icon: '{{moduleName}}-home',
+        showInMenu: true,
+        isLeaf: true
+      },
+      component: Index
+    }
+  ]
+}
