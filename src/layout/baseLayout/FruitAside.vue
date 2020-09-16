@@ -44,6 +44,9 @@ export default {
     routes: vm => (vm.$router?.options?.routes || []).concat(vm.authRoutes || []),
     activePath: vm => vm.$route.fullPath
   },
+  mounted() {
+    this.menus = this.getMemuData(this.routes)
+  },
   methods: {
     // 标准化菜单数据
     getMemuData(routes, parentPath = '') {
@@ -69,9 +72,6 @@ export default {
     menuCollapseChange() {
       this.$store.commit('global/setMenuCollapse')
     }
-  },
-  mounted() {
-    this.menus = this.getMemuData(this.routes)
   }
 }
 </script>

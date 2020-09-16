@@ -1,7 +1,11 @@
 <template>
   <div>dashboard/index</div>
 </template>
+
 <script>
-export default {}
+export default {
+  name: 'Index'
+}
 </script>
+
 <style lang="scss" scoped></style>

@@ -3,7 +3,11 @@
     尾部
   </footer>
 </template>
+
 <script>
-export default {}
+export default {
+  name: 'FruitFooter'
+}
 </script>
+
 <style lang="scss" scoped></style>
