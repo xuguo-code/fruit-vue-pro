@@ -1,4 +1,4 @@
-const Index = () => import(/* webpackChunkName: "dashboard" */ './index')
+const Index = () => import(/* webpackChunkName: "dashboard" */ './Index')
 
 export default {
   path: '/dashboard',

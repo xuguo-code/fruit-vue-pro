@@ -1,5 +1,5 @@
-const Index = () => import(/* webpackChunkName: "home" */ './index')
-const Index2 = () => import(/* webpackChunkName: "home" */ './index2')
+const Index = () => import(/* webpackChunkName: "home" */ './Index')
+const Index2 = () => import(/* webpackChunkName: "home" */ './Index2')
 
 export default {
   path: '/',
