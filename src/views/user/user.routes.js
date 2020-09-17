@@ -5,13 +5,11 @@ export default {
   name: 'user',
   meta: {
     title: 'user',
-    icon: 'user',
-    showInMenu: true,
-    isLeaf: false
+    icon: 'user'
     // vuex: 'user'
   },
   component: {
-    render: h => h('router-view')
+    render: h => h('baisc-layout')
   },
   redirect: '/user/index',
   children: [
@@ -20,9 +18,7 @@ export default {
       name: 'userIndex',
       meta: {
         title: '首页',
-        icon: 'user-home',
-        showInMenu: true,
-        isLeaf: true
+        icon: 'user-home'
       },
       component: Index
     }

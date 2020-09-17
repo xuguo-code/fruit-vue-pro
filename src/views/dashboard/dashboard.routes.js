@@ -9,7 +9,7 @@ export default {
     roles: ['admin', 'editor']
   },
   component: {
-    render: h => h('router-view')
+    render: h => h('baisc-layout')
   },
   redirect: '/dashboard/index',
   children: [

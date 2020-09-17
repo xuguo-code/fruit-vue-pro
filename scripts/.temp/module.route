@@ -6,12 +6,10 @@ export default {
   meta: {
     title: '{{moduleName}}',
     icon: '{{moduleName}}',
-    showInMenu: true,
-    isLeaf: false,
     vuex: '{{moduleName}}'
   },
   component: {
-    render: h => h('router-view')
+    render: h => h('baisc-layout')
   },
   redirect: '/{{moduleName}}/index',
   children: [
@@ -20,9 +18,7 @@ export default {
       name: '{{moduleName}}Index',
       meta: {
         title: '首页',
-        icon: '{{moduleName}}-home',
-        showInMenu: true,
-        isLeaf: true
+        icon: '{{moduleName}}-home'
       },
       component: Index
     }

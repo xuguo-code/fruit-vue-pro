@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- 视图展示 -->
-    <baise-layout />
+    <router-view />
     <!-- 设置抽屉 -->
     <options-drawer />
   </div>

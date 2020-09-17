@@ -11,7 +11,7 @@ export default {
     vuex: 'home'
   },
   component: {
-    render: h => h('router-view')
+    render: h => h('baisc-layout')
   },
   redirect: '/index',
   children: [

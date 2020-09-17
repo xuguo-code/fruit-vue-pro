@@ -27,7 +27,7 @@ import FruitAside from './baseLayout/FruitAside'
 import FruitMainHeader from './baseLayout/FruitMainheader'
 
 export default {
-  name: 'BaiseLayout',
+  name: 'BaiscLayout',
   components: {
     FruitHeader,
     FruitAside,
