@@ -1,7 +1,7 @@
 const Index = () => import(/* webpackChunkName: "dashboard" */ './Index')
 
 export default {
-  path: '/dashboard',
+  path: 'dashboard',
   name: 'dashboard',
   meta: {
     title: '仪表盘',
@@ -9,9 +9,9 @@ export default {
     roles: ['admin', 'editor']
   },
   component: {
-    render: h => h('baisc-layout')
+    render: h => h('router-view')
   },
-  redirect: '/dashboard/index',
+  redirect: 'dashboard/index',
   children: [
     {
       path: 'index',

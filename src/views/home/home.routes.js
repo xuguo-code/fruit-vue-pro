@@ -2,18 +2,17 @@ const Index = () => import(/* webpackChunkName: "home" */ './Index')
 const Index2 = () => import(/* webpackChunkName: "home" */ './Index2')
 
 export default {
-  path: '/',
-  name: 'Home',
+  path: 'home',
+  name: 'home',
   meta: {
-    title: '首页',
+    title: 'Home',
     icon: 'home',
-    isLeaf: false,
     vuex: 'home'
   },
   component: {
-    render: h => h('baisc-layout')
+    render: h => h('router-view')
   },
-  redirect: '/index',
+  redirect: 'home/index',
   children: [
     {
       path: 'index',

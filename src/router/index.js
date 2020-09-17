@@ -4,13 +4,13 @@ import {
   addProgressToRouter,
   dynamicVuexRegisterInRouter
 } from './handleOfRouter'
-import { router, asnycRoutes } from './global.router'
+import { router, RootRoute as dynamicRoute } from './global.router'
 import { WildcardRoute, WihteList } from './config.routes'
 
 // 生成流程处理路由的函数
 const HandlerOfRouterPipeFunc = genratePipeFunc(
   // 过滤权限
-  permissionRoutes(asnycRoutes, WihteList, WildcardRoute),
+  permissionRoutes([dynamicRoute], WihteList, WildcardRoute),
   // 添加进度条
   addProgressToRouter(),
   // 添加动态注册vuex模块的能力

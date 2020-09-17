@@ -27,10 +27,10 @@ export default {
          *  title
          * }
          */
-        if (!route?.meta?.hideInBreadcrumb) {
+        if (!route?.meta?.skip && !route?.meta?.hideInBreadcrumb) {
           let title = route?.meta?.title || route.name
           let path = route?.redirect || route.path
-          if (!path || !name) {
+          if (path && title) {
             return [
               ...memo,
               {
@@ -41,6 +41,8 @@ export default {
           } else {
             return memo
           }
+        } else {
+          return memo
         }
       }, [])
     }

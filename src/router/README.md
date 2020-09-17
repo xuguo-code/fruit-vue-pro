@@ -5,9 +5,9 @@
 
 ## 创建模块
 
-#### 1. `FinalRoute` 放置在最终位置的`route`配置
+#### 1. `WildcardRoute` 放置在最末位置的通配路由表
 
-#### 2. `constRoutes` 从业务模块中分离的不需要权限的路由表
+#### 2. `constRoutes` 静态的路由表
 
 #### 3. 业务模块
 
@@ -29,3 +29,4 @@ npm run create [moduleName]
 | `hideInMenu` | 是否在菜单中隐藏该项目 | `false` |
 | `hideInBreadcrumb` | 是否在面包屑中隐藏该项目 | `false` |
 | `isLeaf` | 该菜单项是否为叶子节点（有时候我们需要隐藏某个菜单项的所有子项） | `false` |
+| `skip` | 在面包屑或者菜单中跳过该路由 | `false` |

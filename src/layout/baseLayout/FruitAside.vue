@@ -65,7 +65,8 @@ export default {
           if (!route?.meta?.isLeaf && route?.children) {
             menu.children = this.getMemuData(route.children, menu.path)
           }
-          return [...memo, menu]
+          const addMenu = route?.meta?.skip ? menu?.children : [menu]
+          return [...memo, ...addMenu]
         } else {
           return memo
         }
