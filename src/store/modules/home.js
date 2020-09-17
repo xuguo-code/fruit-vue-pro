@@ -1,5 +1,5 @@
 let state = {
-  homeData: []
+  homeData: 'test dynamic register home module'
 }
 
 let mutations = {

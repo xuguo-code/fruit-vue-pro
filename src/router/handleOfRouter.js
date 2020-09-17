@@ -123,7 +123,6 @@ export const addProgressToRouter = () => router => {
  * @desc 为每个模块动态注册 vuex
  */
 export const dynamicVuexRegisterInRouter = () => {
-  let cacheMap = new Map()
   return router => {
     router.beforeEach((to, from, next) => {
       // 查找最先匹配的含有的vuex模块名
@@ -133,16 +132,15 @@ export const dynamicVuexRegisterInRouter = () => {
           break
         }
       }
-      if (vuexModuleName && !cacheMap.get(vuexModuleName)) {
+      if (vuexModuleName && !store.hasModule(vuexModuleName)) {
         let vuex = null
         try {
-          vuex = require(`@/store/modules/${vuexModuleName}.js`)
+          vuex = require(`@/store/modules/${vuexModuleName}.js`).default
           // 动态注册vuex
           store.registerModule(vuexModuleName, vuex)
         } catch (error) {
           console.log(`require error ${error}`)
         }
-        cacheMap.set(vuexModuleName, vuex ? true : 'require error')
       }
       next()
     })
