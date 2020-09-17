@@ -133,12 +133,15 @@ export const dynamicVuexRegisterInRouter = () => {
     router.beforeEach((to, from, next) => {
       const moduleRouteMeta = to.matched[0].meta
       const vuexModuleName = moduleRouteMeta.vuex
-      if (!cacheMap.get(vuexModuleName)) {
-        const vuex = require(`@/store/modules/${vuexModuleName}.js`)
-        console.log(vuex)
-        cacheMap.set(vuexModuleName, true)
+      if (vuexModuleName && !cacheMap.get(vuexModuleName)) {
+        let vuex = null
+        try {
+          vuex = require(`@/store/modules/${vuexModuleName}.js`)
+        } catch (error) {
+          console.log(`require error ${error}`)
+        }
+        cacheMap.set(vuexModuleName, vuex ? true : 'require error')
       }
-
       next()
     })
     return router
