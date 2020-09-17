@@ -33,10 +33,10 @@ export default {
   computed: {
     themeMode: {
       get() {
-        return this.$store.getters['global/themeMode'] || 'light'
+        return this.$store.getters['app/themeMode'] || 'light'
       },
       set(mode) {
-        this.$store.dispatch('global/setThemeMode', mode)
+        this.$store.dispatch('app/setThemeMode', mode)
       }
     }
   }

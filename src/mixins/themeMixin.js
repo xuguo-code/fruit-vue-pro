@@ -5,7 +5,7 @@ export default {
     Vue.mixin({
       name: 'ThemeMixin',
       computed: {
-        ...mapGetters('global', {
+        ...mapGetters('app', {
           $_themeMode_mixin: 'themeMode',
           $_theme_mixin: 'theme'
         })

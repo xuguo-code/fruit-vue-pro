@@ -30,21 +30,22 @@ export const permissionRoutes = (rolesRoutes = [], wihteList = [], WildcardRoute
         } else {
           // 1.2 获取用户角色
           const hasRoles = store.getters['user/hasRole']
-          if (hasRoles && hasRoles.length > 0) {
+          if (hasRoles) {
             // 1.2.1 存在且有角色 说明已经生成过角色路由了
             next()
           } else {
             try {
               // 1.2.2 获取用户角色
+              // 请求获取
               const roles = ['admin']
+              // 存储角色信息
+              store.commit('user/setRoles', roles)
               // 生成动态路由
               const asyncRoutes = genrateAsnycRoutes(rolesRoutes, roles)
               // 存储权限路由
-              store.commit('global/setRoutes', asyncRoutes)
+              store.commit('app/setRoutes', asyncRoutes)
               // 添加过滤权限后的路由表
               router.addRoutes([...asyncRoutes, ...WildcardRoute])
-              // 设置角色
-              store.commit('user/setHasRole')
               // 跳转
               next({ ...to, replace: true })
             } catch (e) {
@@ -104,7 +105,7 @@ function hasRoles(needRoles, curRoles) {
   return [...new Set([...needRoles, ...curRoles])].length < needRolesNum + curRolesNum
 }
 /**
- * 为路由添加进度条
+ * @desc 为路由添加进度条
  */
 export const addProgressToRouter = () => router => {
   router.beforeEach((to, from, next) => {
@@ -119,18 +120,25 @@ export const addProgressToRouter = () => router => {
   return router
 }
 /**
- * 为每个模块动态注册 vuex
+ * @desc 为每个模块动态注册 vuex
  */
 export const dynamicVuexRegisterInRouter = () => {
   let cacheMap = new Map()
   return router => {
     router.beforeEach((to, from, next) => {
-      const moduleRouteMeta = to.matched[0].meta
-      const vuexModuleName = moduleRouteMeta.vuex
+      // 查找最先匹配的含有的vuex模块名
+      let vuexModuleName = null
+      for (let i = 0; i < to.matched.length; i++) {
+        if ((vuexModuleName = to.matched[i]?.meta?.vuex)) {
+          break
+        }
+      }
       if (vuexModuleName && !cacheMap.get(vuexModuleName)) {
         let vuex = null
         try {
           vuex = require(`@/store/modules/${vuexModuleName}.js`)
+          // 动态注册vuex
+          store.registerModule(vuexModuleName, vuex)
         } catch (error) {
           console.log(`require error ${error}`)
         }
@@ -140,4 +148,28 @@ export const dynamicVuexRegisterInRouter = () => {
     })
     return router
   }
+}
+/**
+ * @desc 根据路由表生成菜单数据
+ */
+export const getMemuDataFromRoutes = (routes, parentPath = '') => {
+  return routes.reduce((memo, route) => {
+    // 需要在菜单中隐藏
+    if (!route?.meta?.hideInMenu) {
+      let menu = {
+        name: route.name,
+        path: `${parentPath}${parentPath === '/' || route.path.includes('/') ? '' : '/'}${
+          route.path
+        }`,
+        meta: route.meta
+      }
+      if (!route?.meta?.isLeaf && route?.children) {
+        menu.children = getMemuDataFromRoutes(route.children, menu.path)
+      }
+      const addMenu = route?.meta?.skip ? menu?.children : [menu]
+      return [...memo, ...addMenu]
+    } else {
+      return memo
+    }
+  }, [])
 }

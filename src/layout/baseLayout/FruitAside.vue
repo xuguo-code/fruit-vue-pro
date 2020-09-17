@@ -27,6 +27,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import FruitSubMenu from './FruitSubMenu'
+import { getMemuDataFromRoutes } from '@/router/handleOfRouter'
 
 export default {
   name: 'FruitAside',
@@ -39,42 +40,19 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('global', {
+    ...mapGetters('app', {
       isCollapse: 'menuIsCollapse',
-      authRoutes: 'routes'
+      routes: 'routes'
     }),
-    routes: vm => (vm.$router?.options?.routes || []).concat(vm.authRoutes || []),
     activePath: vm => vm.$route.fullPath
   },
   mounted() {
-    this.menus = this.getMemuData(this.routes)
+    this.menus = getMemuDataFromRoutes(this.routes)
   },
   methods: {
-    // 标准化菜单数据
-    getMemuData(routes, parentPath = '') {
-      return routes.reduce((memo, route) => {
-        // 需要在菜单中隐藏
-        if (!route?.meta?.hideInMenu) {
-          let menu = {
-            name: route.name,
-            path: `${parentPath}${parentPath === '/' || route.path.includes('/') ? '' : '/'}${
-              route.path
-            }`,
-            meta: route.meta
-          }
-          if (!route?.meta?.isLeaf && route?.children) {
-            menu.children = this.getMemuData(route.children, menu.path)
-          }
-          const addMenu = route?.meta?.skip ? menu?.children : [menu]
-          return [...memo, ...addMenu]
-        } else {
-          return memo
-        }
-      }, [])
-    },
     // 收起打开菜单
     menuCollapseChange() {
-      this.$store.commit('global/setMenuCollapse')
+      this.$store.commit('app/setMenuCollapse')
     }
   }
 }

@@ -1,6 +1,8 @@
 import { genThemeObject } from '@/theme'
+import { ConstRoutes } from '@/router/config.routes'
+
 let state = {
-  routes: [],
+  routes: ConstRoutes,
   themeMode: 'light',
   theme: {
     ...genThemeObject('light')
@@ -11,7 +13,7 @@ let state = {
 
 let mutations = {
   setRoutes(state, r) {
-    return (state.routes = r)
+    return (state.routes = ConstRoutes.concat(r))
   },
   setMenuCollapse(state) {
     return (state.menuIsCollapse = !state.menuIsCollapse)

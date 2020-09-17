@@ -1,15 +1,16 @@
 let state = {
-  hasRole: []
+  roles: []
 }
 
 let mutations = {
-  setHasRole(state) {
-    return (state.hasRole = ['admin'])
+  setRoles(state, roles) {
+    return (state.roles = roles)
   }
 }
 
 let getters = {
-  hasRole: state => state?.hasRole
+  hasRole: state => state?.roles && state?.roles.length > 0,
+  roles: state => state?.roles
 }
 
 export default {
