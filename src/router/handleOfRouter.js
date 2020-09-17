@@ -5,9 +5,8 @@ import NProgress from 'nprogress'
  * @param {路由表} routes 路由配置表
  */
 export const addRoutes = (routes = []) => {
-  const cacheRoutes = routes
   return router => {
-    router.addRoutes(cacheRoutes)
+    router.addRoutes(routes)
     return router
   }
 }
@@ -16,40 +15,34 @@ export const addRoutes = (routes = []) => {
  * @param {需要角色的路由表} rolesRoutes
  * @param {非登录也可查看的白名单路由表} wihteList
  */
-export const permissionRoutes = (rolesRoutes = [], wihteList = [], finalRoutes = []) => {
-  // 权限路由
-  const cacheRoutes = rolesRoutes
-  // 白名单（未登录可访问）
-  const cacheWihtList = wihteList
-  // 最后位置的通配路由
-  const cacheFinalRoutes = finalRoutes
+export const permissionRoutes = (rolesRoutes = [], wihteList = [], WildcardRoute = []) => {
   return router => {
     router.beforeEach((to, from, next) => {
       // 获取token
       let hasToken = getToken() || true
 
       if (hasToken) {
-        // 已登录
+        // 1. 已登录
         // 获取角色
         if (to.path === '/login') {
-          // 已登录重定向到首页
+          // 1.1 已登录重定向到首页
           next('/')
         } else {
-          // 获取用户角色
+          // 1.2 获取用户角色
           const hasRoles = store.getters['user/hasRole']
           if (hasRoles && hasRoles.length > 0) {
-            // 存在且有角色 说明已经生成过角色路由了
+            // 1.2.1 存在且有角色 说明已经生成过角色路由了
             next()
           } else {
             try {
-              // 获取用户角色
+              // 1.2.2 获取用户角色
               const roles = ['admin']
               // 生成动态路由
-              const asyncRoutes = genrateAsnycRoutes(cacheRoutes, roles)
+              const asyncRoutes = genrateAsnycRoutes(rolesRoutes, roles)
               // 存储权限路由
               store.commit('global/setRoutes', asyncRoutes)
               // 添加过滤权限后的路由表
-              router.addRoutes([...asyncRoutes, ...cacheFinalRoutes])
+              router.addRoutes([...asyncRoutes, ...WildcardRoute])
               // 设置角色
               store.commit('user/setHasRole')
               // 跳转
@@ -68,7 +61,7 @@ export const permissionRoutes = (rolesRoutes = [], wihteList = [], finalRoutes =
         }
       } else {
         // 未登录
-        if (cacheWihtList.includes(to.path)) {
+        if (wihteList.includes(to.path)) {
           next()
         } else {
           next({
@@ -105,6 +98,7 @@ function genrateAsnycRoutes(routes, roles) {
  * @param {当前的角色} curRoles
  */
 function hasRoles(needRoles, curRoles) {
+  // 存在当前角色 合并再去重后必然会小于 两者角色个数之和
   const needRolesNum = needRoles.length
   const curRolesNum = curRoles.length
   return [...new Set([...needRoles, ...curRoles])].length < needRolesNum + curRolesNum

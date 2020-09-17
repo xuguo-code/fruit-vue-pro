@@ -6,9 +6,7 @@ export default {
   meta: {
     title: '仪表盘',
     icon: 'dashboard',
-    roles: ['admin', 'editor'],
-    showInMenu: true,
-    isLeaf: false
+    roles: ['admin', 'editor']
   },
   component: {
     render: h => h('router-view')
@@ -17,12 +15,10 @@ export default {
   children: [
     {
       path: 'index',
-      name: 'DashboardIndex',
+      name: 'dashboardIndex',
       meta: {
         title: '首页',
-        icon: 'dashboard-index',
-        showInMenu: true,
-        isLeaf: true
+        icon: 'dashboard-index'
       },
       component: Index
     }

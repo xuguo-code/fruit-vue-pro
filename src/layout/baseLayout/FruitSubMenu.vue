@@ -1,7 +1,7 @@
 <template>
   <fragment>
     <!-- 直接显示item项目 -->
-    <template v-if="menuInfo.meta.isLeaf">
+    <template v-if="menuInfo.meta.isLeaf || !menuInfo.children">
       <el-menu-item :key="menuInfo.name" :index="menuInfo.path" @click="jumpTo(menuInfo.path)">
         <svg-icon :icon-name="menuInfo.meta.icon" />
         <span>{{ menuInfo.meta.title }}</span>

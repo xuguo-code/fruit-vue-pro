@@ -7,7 +7,6 @@ export default {
   meta: {
     title: '首页',
     icon: 'home',
-    showInMenu: true,
     isLeaf: false,
     vuex: 'home'
   },
@@ -18,24 +17,20 @@ export default {
   children: [
     {
       path: 'index',
-      name: 'HomeIndex',
+      name: 'homeIndex',
       meta: {
         title: '首页1',
         icon: 'index-home',
-        showInMenu: true,
-        isLeaf: true,
         hideInBreadcrumb: true
       },
       component: Index
     },
     {
       path: 'index2',
-      name: 'HomeIndex2',
+      name: 'homeIndex2',
       meta: {
         title: '首页2',
-        icon: 'index-home',
-        showInMenu: true,
-        isLeaf: true
+        icon: 'index-home'
       },
       component: Index2
     }

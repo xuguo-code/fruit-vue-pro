@@ -1,5 +1,6 @@
 <template>
   <aside class="aside-wrap">
+    <!-- 侧边菜单 -->
     <div class="aside-menu-wrap">
       <el-menu
         class="aside-menu"
@@ -12,6 +13,7 @@
         <fruit-sub-menu v-for="menu in menus" :key="menu.path" :menu-info="menu" />
       </el-menu>
     </div>
+    <!-- 收起按钮 -->
     <div :class="['main-header-collapse']" @click="menuCollapseChange">
       <svg-icon
         class="menu-btn"
@@ -51,7 +53,8 @@ export default {
     // 标准化菜单数据
     getMemuData(routes, parentPath = '') {
       return routes.reduce((memo, route) => {
-        if (route?.meta?.showInMenu) {
+        // 需要在菜单中隐藏
+        if (!route?.meta?.hideInMenu) {
           let menu = {
             name: route.name,
             path: `${parentPath}${parentPath === '/' || route.path.includes('/') ? '' : '/'}${
