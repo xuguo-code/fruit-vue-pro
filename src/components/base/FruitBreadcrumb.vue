@@ -1,13 +1,18 @@
 <template>
   <div>
     <el-breadcrumb>
-      <el-breadcrumb-item
-        v-for="route in breadcrumbData"
-        :key="route.name"
-        :to="{ path: route.path }"
-      >
-        {{ route.title }}
-      </el-breadcrumb-item>
+      <template v-for="route in breadcrumbData">
+        <el-breadcrumb-item
+          v-if="route.path !== curPath"
+          :key="route.title"
+          :to="{ path: route.path }"
+        >
+          {{ route.title }}
+        </el-breadcrumb-item>
+        <el-breadcrumb-item v-else :key="route.title">
+          {{ route.title }}
+        </el-breadcrumb-item>
+      </template>
     </el-breadcrumb>
   </div>
 </template>
@@ -16,7 +21,8 @@
 export default {
   name: 'FruitBreadcrumb',
   computed: {
-    breadcrumbData: vm => vm.handleOfBreadcrumb(vm.$route.matched || [])
+    breadcrumbData: vm => vm.handleOfBreadcrumb(vm.$route.matched || []),
+    curPath: vm => vm.$route.fullPath
   },
   methods: {
     handleOfBreadcrumb(matched) {
@@ -34,7 +40,7 @@ export default {
             return [
               ...memo,
               {
-                path,
+                path: path.startsWith('/') ? path : '/' + path,
                 title
               }
             ]
