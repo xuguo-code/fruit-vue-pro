@@ -6,9 +6,9 @@
         class="aside-menu"
         :default-active="activePath"
         :collapse="isCollapse"
-        :background-color="$_theme_mixin.backgroundColor"
-        :text-color="$_theme_mixin.textColor"
-        :active-text-color="$_theme_mixin.activeTextColor"
+        :background-color="$_mixin_theme['--color-background']"
+        :text-color="$_mixin_theme['--color-text']"
+        :active-text-color="$_mixin_theme['--color-primary']"
       >
         <fruit-sub-menu v-for="menu in menus" :key="menu.path" :menu-info="menu" />
       </el-menu>
@@ -17,8 +17,8 @@
     <div :class="['main-header-collapse']" @click="menuCollapseChange">
       <svg-icon
         class="menu-btn"
-        :fill="$_theme_mixin.activeTextColor"
         :icon-name="isCollapse ? 'menu-open' : 'menu-close'"
+        :fill="$_mixin_theme['--color-primary']"
       />
     </div>
   </aside>

@@ -1,16 +1,22 @@
-import varibles from '@/styles/_varibles.scss'
+// 载入主题
+const buildInKeys = ['name', 'key']
 
-export const themeKeys = ['backgroundColor', 'textColor', 'activeTextColor']
+const loadTheme = require.context('./colorful', true, /\.js$/)
 
-export function genThemeObject(mode) {
-  return themeKeys.reduce((memo, key) => {
-    const styleKey = `${mode}-${key}`
-    if (Reflect.has(varibles, styleKey)) {
-      memo[key] = varibles[styleKey]
-    } else {
-      const defaultKey = `light-${key}`
-      memo[key] = varibles[defaultKey]
+const themes = loadTheme.keys().map(t => loadTheme(t).default)
+
+// 更新主题方法
+function updateTheme(themeKey = 'light') {
+  const theme = themes.find(t => t.key === themeKey)
+  for (const key in theme) {
+    if (buildInKeys.includes(key)) {
+      continue
     }
-    return memo
-  }, {})
+    if (document.body) {
+      // 动态设置css variable
+      document.body.style.setProperty(key, theme[key])
+    }
+  }
 }
+
+export { themes, updateTheme }

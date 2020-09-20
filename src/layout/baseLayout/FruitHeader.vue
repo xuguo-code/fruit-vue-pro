@@ -1,5 +1,5 @@
 <template>
-  <header :class="['header-wrap', `header-wrap--${$_themeMode_mixin}`]">
+  <header class="header-wrap">
     <div class="left" @click="backToHome">
       <img :src="logoImg" />
       <h2>Fruit-vue-pro</h2>
@@ -33,12 +33,9 @@ export default {
   width: 100%;
   height: 60px;
   padding: 0 20px;
-  border-bottom: solid 1px $border-color;
-  &--dark {
-    background: $dark-background-color;
-    color: $dark-text-color;
-    border-bottom: solid 1px transparent;
-  }
+  border-bottom: solid 1px $--color-gray;
+  background: $--color-background;
+  color: $--color-text;
   .left {
     float: left;
     display: flex;

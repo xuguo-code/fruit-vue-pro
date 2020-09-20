@@ -6,9 +6,15 @@
         <h2>配置</h2>
         <section class="option-wrap">
           <div class="option-item">
-            <span>主题色：</span>
+            <span>主题模式：</span>
             <el-radio-group v-model="themeMode" size="small">
-              <el-radio-button v-for="t in themes" :key="t" :label="t"></el-radio-button>
+              <el-radio-button v-for="t in themeModes" :key="t" :label="t"></el-radio-button>
+            </el-radio-group>
+          </div>
+          <div class="option-item">
+            <span>主题色：</span>
+            <el-radio-group v-model="themeColor" size="small">
+              <el-radio-button v-for="t in themeKeys" :key="t" :label="t"></el-radio-button>
             </el-radio-group>
           </div>
         </section>
@@ -22,12 +28,16 @@
 </template>
 
 <script>
+import { themes } from '@/theme'
+
 export default {
   name: 'OptionsDrawer',
   data() {
+    let themeKeys = themes.map(t => t.key).filter(t => t !== 'dark' && t !== 'light')
     return {
       drawer: false,
-      themes: ['dark', 'light']
+      themeKeys,
+      themeModes: ['light', 'dark']
     }
   },
   computed: {
@@ -37,6 +47,14 @@ export default {
       },
       set(mode) {
         this.$store.dispatch('app/setThemeMode', mode)
+      }
+    },
+    themeColor: {
+      get() {
+        return this.$store.getters['app/themeColor'] || 'dark'
+      },
+      set(color) {
+        this.$store.dispatch('app/setThemeColor', color)
       }
     }
   }

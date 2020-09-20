@@ -1,14 +1,12 @@
-import { genThemeObject } from '@/theme'
+import { updateTheme } from '@/theme'
 import { ConstRoutes } from '@/router/config.routes'
 
 let state = {
   routes: ConstRoutes,
   themeMode: 'light',
-  theme: {
-    ...genThemeObject('light')
-  },
+  themeColor: 'blue',
   menuIsCollapse: false,
-  locale: 'zhCN'
+  Lang: 'zhCN'
 }
 
 let mutations = {
@@ -18,29 +16,32 @@ let mutations = {
   setMenuCollapse(state) {
     return (state.menuIsCollapse = !state.menuIsCollapse)
   },
-  setLocale(state, lang) {
-    return (state.locale = lang)
-  },
-  setTheme(state, theme) {
-    return (state.theme = theme)
+  setLang(state, lang) {
+    return (state.lang = lang)
   },
   setMode(state, mode) {
     return (state.themeMode = mode)
+  },
+  setColor(state, color) {
+    return (state.themeColor = color)
   }
 }
 
 let actions = {
+  setThemeColor({ commit }, mode) {
+    updateTheme(mode)
+    commit('setColor', mode)
+  },
   setThemeMode({ commit }, mode) {
-    let theme = genThemeObject(mode)
+    updateTheme(mode)
     commit('setMode', mode)
-    commit('setTheme', theme)
   }
 }
 
 let getters = {
   routes: state => state.routes,
-  theme: state => state.theme,
   themeMode: state => state.themeMode,
+  themeColor: state => state.themeColor,
   menuIsCollapse: state => state.menuIsCollapse,
   locale: state => state.locale
 }

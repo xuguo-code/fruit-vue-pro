@@ -1,22 +1,29 @@
-$border-color: #e6e6e6;
-
-$dark-background-color: #545c64;
-$dark-text-color: #fff;
-$dark-active-text-color: #ffd04b;
-
-$light-background-color: #fff;
-$light-text-color: #303133;
-$light-active-text-color: #409EFF; 
-
-:export {
-  dark: {
-    backgroundColor: $dark-background-color;
-    textColor: $dark-text-color;
-    activeTextColor: $dark-active-text-color;
-  };
-  light: {
-    backgroundColor: $light-background-color;
-    textColor: $light-text-color;
-    activeTextColor: $light-active-text-color
-  };
+:root {
+  // 主题相关
+  --color-primary: #409EFF;
+  --color-secondary: #979797;
+  --color-success: #00d212;
+  --color-warning: #f0bd00;
+  --color-danger: #ff0d22;
+  --color-info: #00a5ee;
+  --color-black: #000;
+  --color-wihte: #fff;
+  --color-gray: #e6e6e6;
+  // mode 相关
+  --color-background: var(--color-wihte);
+  --color-text: var(--color-black);
 }
+
+$--color-primary: var(--color-primary);
+$--color-secondary: var(--color-secondary);
+$--color-success: var(--color-success);
+$--color-warning: var(--color-warning);
+$--color-danger: var(--color-danger);
+$--color-info: var(--color-info);
+$--color-black: var(--color-black);
+$--color-wihte: var(--color-wihte);
+$--color-gray: var(--color-gray);
+$--color-background: var(--color-background);
+$--color-text: var(--color-text);
+
+$border-color: #e6e6e6;
