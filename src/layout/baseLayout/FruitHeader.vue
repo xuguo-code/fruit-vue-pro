@@ -33,7 +33,7 @@ export default {
   width: 100%;
   height: 60px;
   padding: 0 20px;
-  border-bottom: solid 1px $--color-gray;
+  border-bottom: solid 1px $--color-2-border;
   background: $--color-background;
   color: $--color-text;
   .left {
