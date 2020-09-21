@@ -17,8 +17,7 @@ export default {
       path: 'index',
       name: '{{moduleName}}Index',
       meta: {
-        title: '首页',
-        icon: '{{moduleName}}-home'
+        title: '首页'
       },
       component: Index
     }
