@@ -11,7 +11,7 @@ const RootRoute = {
   meta: {
     skip: true
   },
-  redirect: '/home',
+  redirect: '/dashboard',
   component: {
     render: h => h('baisc-layout')
   },
