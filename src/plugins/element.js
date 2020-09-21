@@ -32,6 +32,7 @@ let AllComp = {
   Breadcrumb,
   BreadcrumbItem
 }
+
 // 注册组件
 export default {
   install(Vue) {

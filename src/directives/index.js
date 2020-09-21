@@ -5,8 +5,8 @@ export default {
     directives
       .keys()
       .map(directives)
-      .forEach(({ default: directives }) => {
-        Vue.directive(directives.name, directives)
+      .forEach(({ default: directive }) => {
+        Vue.directive(directive.name, directive)
       })
   }
 }
