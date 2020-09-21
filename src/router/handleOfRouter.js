@@ -98,10 +98,11 @@ function genrateAsnycRoutes(routes, roles) {
  * @param {需要的角色} needRoles
  * @param {当前的角色} curRoles
  */
-function hasRoles(needRoles, curRoles) {
+export function hasRoles(needRoles, curRoles) {
   // 存在当前角色 合并再去重后必然会小于 两者角色个数之和
   const needRolesNum = needRoles.length
   const curRolesNum = curRoles.length
+  if (needRolesNum < 1) return true
   return [...new Set([...needRoles, ...curRoles])].length < needRolesNum + curRolesNum
 }
 /**

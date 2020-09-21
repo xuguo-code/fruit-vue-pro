@@ -4,6 +4,7 @@
     <span>
       {{ formHomeVuex }}
     </span>
+    <span v-permission="['admin']">测试权限指令</span>
   </div>
 </template>
 
