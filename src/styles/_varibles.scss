@@ -37,27 +37,39 @@ $--dash-border-width: 2px;
 $--solid-border-width: 1px;
 
 $--radius-no: 0px;
-$--radius-s: 2px;
-$--radius-l: 4px;
+$--radius-sm: 2px;
+$--radius-lg: 4px;
 
 // 投影
 $--shadow-base: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 $--shadow-shallow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 
 // 字体
-$--font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-'Noto Color Emoji';
-
-$--font-size-title-l: 20px;
+// 字体簇-优化显示效果
+$--font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+// 等宽字体
+$--font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+  "Liberation Mono", "Courier New", monospace !default;
+$--font-family-base: $--font-family-sans-serif !default;
+// 字体大小
+$--font-size-title-lg: 20px;
 $--font-size-title: 18px;
-$--font-size-title-s: 16px;
+$--font-size-title-sm: 16px;
 $--font-size-base: 14px;
-$--font-size-base-s: 14px;
+$--font-size-base-sm: 14px;
 $--font-size-assist: 12px;
-
+// 行高
 $--line-height-no: 1;
-$--line-height-s: 1.3;
+$--line-height-sm: 1.3;
 $--line-height-m: 1.5;
-$--line-height-l: 1.7;
+$--line-height-lg: 1.7;
+// 字重
+$--font-weight-lighter: lighter !default;
+$--font-weight-light: 300 !default;
+$--font-weight-normal: 400 !default;
+$--font-weight-bold: 700 !default;
+$--font-weight-bolder: bolder !default;
+$--font-weight-base: $--font-weight-normal !default;
 
