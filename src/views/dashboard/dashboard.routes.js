@@ -17,8 +17,7 @@ export default {
       path: 'index',
       name: 'dashboardIndex',
       meta: {
-        title: '首页',
-        icon: 'dashboard-index'
+        title: '数据中心'
       },
       component: Index
     }
