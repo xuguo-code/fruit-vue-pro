@@ -33,9 +33,12 @@ export default {
   width: 100%;
   height: 60px;
   padding: 0 20px;
-  border-bottom: solid 1px $--color-border-2;
-  background: $--color-background;
-  color: $--color-text;
+  border-bottom: solid 1px $--color-border-4;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  // background: $--color-background;
+  // color: $--color-text;
+  background: $--color-wihte;
+  color: $--color-text-main;
   .left {
     float: left;
     display: flex;

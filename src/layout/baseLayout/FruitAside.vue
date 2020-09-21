@@ -14,7 +14,13 @@
       </el-menu>
     </div>
     <!-- 收起按钮 -->
-    <div :class="['main-header-collapse']" @click="menuCollapseChange">
+    <div
+      :class="[
+        'main-header-collapse',
+        $_mixin_themeMode === 'dark' ? 'main-header-collapse--dark' : ''
+      ]"
+      @click="menuCollapseChange"
+    >
       <svg-icon
         class="menu-btn"
         :icon-name="isCollapse ? 'menu-open' : 'menu-close'"
@@ -64,7 +70,8 @@ export default {
   display: flex;
   flex-direction: column;
   text-align: left;
-  border-right: 1px solid #e6e6e6;
+  background: $--color-background;
+  box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
   .aside-menu-wrap {
     flex: 1 1 0%;
     width: auto;
@@ -94,7 +101,10 @@ export default {
     padding: 0 0 0 20px;
     line-height: 50px;
     cursor: pointer;
-    border-top: 1px solid #e6e6e6;
+    border-top: 1px solid $--color-border-4;
+    &--dark {
+      border-top-color: $--color-background;
+    }
   }
 }
 </style>

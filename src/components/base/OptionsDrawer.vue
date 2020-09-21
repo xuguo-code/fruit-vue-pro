@@ -91,8 +91,7 @@ export default {
     background: #fff;
     border-left: 1px solid #e6e6e6;
     transform: translateX(100%);
-    box-shadow: -6px 0 16px -8px rgba(0, 0, 0, 0.08), -9px 0 28px 0 rgba(0, 0, 0, 0.05),
-      -12px 0 48px 16px rgba(0, 0, 0, 0.03);
+    box-shadow: $--shadow-deep;
     transition: transform 0.3s cubic-bezier(0.7, 0.3, 0.1, 1),
       box-shadow 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
   }
