@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     svgClass() {
-      return `svg-icon ${this.className}`
+      return `${this.className} svg-icon`
     },
     finalIconName() {
       return `#icon-${this.iconName}`

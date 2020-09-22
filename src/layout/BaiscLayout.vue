@@ -52,7 +52,8 @@ export default {
     .el-main {
       max-width: 1200px;
       margin: 0 auto;
-      background: #fff;
+      padding: 0;
+      border-radius: $--radius-sm;
     }
   }
 }

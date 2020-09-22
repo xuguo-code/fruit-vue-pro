@@ -13,7 +13,10 @@ import {
   RadioButton,
   Switch,
   Breadcrumb,
-  BreadcrumbItem
+  BreadcrumbItem,
+  Card,
+  Row,
+  Col
 } from 'element-ui'
 let AllComp = {
   Button,
@@ -30,7 +33,10 @@ let AllComp = {
   RadioButton,
   Switch,
   Breadcrumb,
-  BreadcrumbItem
+  BreadcrumbItem,
+  Card,
+  Row,
+  Col
 }
 
 // 注册组件
