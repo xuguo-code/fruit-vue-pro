@@ -88,19 +88,24 @@ export default {
     bottom: 0;
     right: 0;
     width: 300px;
-    background: #fff;
-    border-left: 1px solid #e6e6e6;
+    background: $--color-wihte;
     transform: translateX(100%);
     box-shadow: $--shadow-deep;
     transition: transform 0.3s cubic-bezier(0.7, 0.3, 0.1, 1),
       box-shadow 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
+    h2 {
+      text-align: center;
+      font-size: $--font-size-title;
+      font-weight: $--font-weight-bold;
+      color: $--color-text-main;
+    }
   }
   .drawer-btn {
     position: absolute;
     top: 50%;
     right: 300px;
     padding: 10px;
-    border-radius: 5px 0 0 5px;
+    border-radius: $--radius-lg 0 0 $--radius-lg;
   }
   .option-wrap {
     height: 100%;
