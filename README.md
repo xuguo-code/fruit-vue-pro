@@ -2,31 +2,36 @@
 
 ### 特性
 
+该方案意在解决开发中中心化严重时非常容易出现做一个新的功能需要更改到核心代码以造成代码冲突的问题，使得多分支的`git flow`变为难题；
+而当前解决方案采用的就是抽象出一个`module`的概念以模块来承载业务，尽量分离模块与模块之间可能会存在的核心代码耦合类似：
+路由配置过于集中、`vuex`首次加载过于庞大、国际化语言配置集中在公用文件夹中配置等等类似的问题；
+同时`module`的概念也很好的提供了一个代码分割的颗粒度，能让项目中路由、`vuex`等等影响首屏`bunld`大小的因素以`module`的概念来动态加载。
+
 ### 如何开始
 ```
-npm install
+yarn
 ```
 
 ### 开发环境启动指令
 ```
-npm run serve
+yarn serve
 ```
 
 ### 生产环境打包
 ```
-npm run build
+yarn build
 ```
 
 ### autoFix lint 错误
 ```
-npm run lint
+yarn lint
 ```
 
 ### 提交代码请执行
 ```
 // 首先通过 git add 或者IDE添加需要提交的变更
 // 然后运行
-npm run cm
+yarn cm
 ```
 
 ### commit msg 规范
@@ -46,7 +51,7 @@ npm run cm
 ### 生成 changelog
 ```
 // 第一次生成
-npm run release -- --first-release
+yarn release -- --first-release
 // 后续生成
-npm run release
+yarn release
 ```
