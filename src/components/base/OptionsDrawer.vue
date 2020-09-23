@@ -3,20 +3,17 @@
     <div class="drawer-mask" @click="drawer = !drawer"></div>
     <div class="drawer-content">
       <section class="content-main">
-        <h2>配置</h2>
+        <h2>{{ $t('drawer.title') }}</h2>
         <section class="option-wrap">
           <div class="option-item">
-            <span class="sub-title">菜单栏模式</span>
+            <span class="sub-title">{{ $t('drawer.themeMode') }}</span>
             <el-radio-group v-model="themeMode" size="small">
               <el-radio v-for="t in themeModes" :key="t" :label="t"></el-radio>
             </el-radio-group>
           </div>
           <split-line :margin="20" />
           <div class="option-item">
-            <span class="sub-title">主题色</span>
-            <!-- <el-radio-group v-model="themeColor" size="small">
-              <el-radio-button v-for="t in themeKeys" :key="t" :label="t"></el-radio-button>
-            </el-radio-group> -->
+            <span class="sub-title">{{ $t('drawer.themeColor') }}</span>
             <div class="theme-color" @click="proxyThemeColorClick">
               <div
                 v-for="t in themeColors"

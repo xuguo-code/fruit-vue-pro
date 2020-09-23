@@ -4,7 +4,11 @@ const components = {
   elementLang: enLocale
 }
 const locale = {
-  test: 'test'
+  test: 'test',
+  // 侧边配置栏
+  'drawer.title': 'Setting',
+  'drawer.themeMode': 'Menu Theme Mode',
+  'drawer.themeColor': 'Theme Color'
 }
 
 export default {
