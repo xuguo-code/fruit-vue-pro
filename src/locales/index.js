@@ -1,5 +1,8 @@
+import storage from 'store'
+import { APP_LANG } from '@/core/buildKey'
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
+import elementLocale from 'element-ui/lib/locale'
 import zhCN from './lang/zh-CN'
 
 export const defaultLang = 'zh-CN'
@@ -29,7 +32,9 @@ export function loadLangAsync(lang) {
     return import(/* webpackChunkName: "load-lang" */ `./lang/${lang}.js`).then(lang => {
       const locale = lang.default
       i18n.setLocaleMessage(lang, locale)
+      elementLocale.use(locale.elementLang)
       loadedLanguages.push(lang)
+      storage.set(APP_LANG, lang)
       return setI18nLang(lang)
     })
   }

@@ -13,9 +13,10 @@ import AllComps from './components'
 import AllLayout from './layout'
 // 插件
 import './plugins'
-// 主题
+// 混入
 import ThemeMixin from './mixins/themeMixin'
+import AppMixin from './mixins/appMixin'
 // 指令
 import AllDirectives from './directives'
 // 插件聚合安装
-composeVueUse(Vue)(Fragment.Plugin, AllComps, AllLayout, ThemeMixin, AllDirectives)
+composeVueUse(Vue)(Fragment.Plugin, AllComps, AllLayout, ThemeMixin, AllDirectives, AppMixin)

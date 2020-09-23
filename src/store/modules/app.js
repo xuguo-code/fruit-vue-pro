@@ -1,3 +1,5 @@
+import storage from 'store'
+import { APP_THEME_COLOR, APP_THEME_MODE } from '@/core/buildKey'
 import { updateTheme } from '@/theme'
 import { ConstRoutes } from '@/router/config.routes'
 import { loadLangAsync } from '@/locales'
@@ -30,12 +32,16 @@ let mutations = {
 
 let actions = {
   setThemeColor({ commit }, mode) {
-    updateTheme(mode)
-    commit('setColor', mode)
+    updateTheme(mode).then(() => {
+      commit('setColor', mode)
+      storage.set(APP_THEME_COLOR, mode)
+    })
   },
   setThemeMode({ commit }, mode) {
-    updateTheme(mode)
-    commit('setMode', mode)
+    updateTheme(mode).then(() => {
+      commit('setMode', mode)
+      storage.set(APP_THEME_MODE, mode)
+    })
   },
   setLanguage({ commit }, lang) {
     commit('setLang', lang)

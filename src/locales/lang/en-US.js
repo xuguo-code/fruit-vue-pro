@@ -1,7 +1,7 @@
 import enLocale from 'element-ui/lib/locale/lang/en'
 
 const components = {
-  elementLocale: enLocale
+  elementLang: enLocale
 }
 const locale = {
   test: 'test'
