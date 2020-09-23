@@ -1,12 +1,13 @@
 import { updateTheme } from '@/theme'
 import { ConstRoutes } from '@/router/config.routes'
+import { loadLangAsync } from '@/locales'
 
 let state = {
   routes: ConstRoutes,
   themeMode: 'light',
   themeColor: 'blue',
   menuIsCollapse: false,
-  Lang: 'zhCN'
+  Lang: 'zh-CN'
 }
 
 let mutations = {
@@ -35,6 +36,18 @@ let actions = {
   setThemeMode({ commit }, mode) {
     updateTheme(mode)
     commit('setMode', mode)
+  },
+  setLanguage({ commit }, lang) {
+    commit('setLang', lang)
+    return new Promise((resolve, reject) => {
+      loadLangAsync(lang)
+        .then(() => {
+          resolve()
+        })
+        .catch(e => {
+          reject(e)
+        })
+    })
   }
 }
 

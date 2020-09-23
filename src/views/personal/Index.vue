@@ -3,6 +3,7 @@
     <h2>个人中心</h2>
     <span>{{ personalData }}</span>
     <span v-permission="['admin']">测试权限指令</span>
+    <span>{{ $t('test') }}</span>
   </div>
 </template>
 
