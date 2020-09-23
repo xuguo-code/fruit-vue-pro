@@ -6,7 +6,7 @@ export default {
       name: 'AppMixin',
       computed: {
         ...mapGetters('app', {
-          $_mixin_currentLang: 'Lang',
+          $_mixin_currentLang: 'lang',
           $_mixin_menuIsCollapse: 'menuIsCollapse'
         })
       }

@@ -1,8 +1,8 @@
 <template>
   <footer class="footer-wrap">
     <div class="link">
-      <a href="" target="_blank">Github</a>
-      <a href="" target="_blank">@xuguo-code</a>
+      <a href="https://github.com/xuguo-code/fruit-vue-pro" target="_blank">Github</a>
+      <a href="https://github.com/xuguo-code" target="_blank">@xuguo-code</a>
     </div>
     <div class="copyright">
       Copyright © 2020

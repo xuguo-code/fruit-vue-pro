@@ -18,7 +18,10 @@ import {
   Col,
   Tabs,
   TabPane,
-  Radio
+  Radio,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem
 } from 'element-ui'
 let AllComp = {
   Button,
@@ -40,7 +43,10 @@ let AllComp = {
   Col,
   Tabs,
   TabPane,
-  Radio
+  Radio,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem
 }
 
 // 注册组件

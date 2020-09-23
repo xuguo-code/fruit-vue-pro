@@ -9,7 +9,7 @@ let state = {
   themeMode: 'light',
   themeColor: 'blue',
   menuIsCollapse: false,
-  Lang: 'zh-CN'
+  lang: 'zh-CN'
 }
 
 let mutations = {
@@ -62,7 +62,8 @@ let getters = {
   themeMode: state => state.themeMode,
   themeColor: state => state.themeColor,
   menuIsCollapse: state => state.menuIsCollapse,
-  locale: state => state.locale
+  locale: state => state.locale,
+  lang: state => state.lang
 }
 
 export default {
