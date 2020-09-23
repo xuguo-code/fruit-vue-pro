@@ -1,5 +1,5 @@
 <template>
-  <chart-card class="views" title="累计用户增量" total="5,000">
+  <chart-card class="views" title="累计用户增量" total="70%">
     <template #default>
       <v-chart :options="bar" />
     </template>

@@ -14,6 +14,9 @@
         <total-users />
       </el-col>
     </el-row>
+    <el-row>
+      <sales-views-info />
+    </el-row>
   </section>
 </template>
 
@@ -22,6 +25,7 @@ import Sales from './dataCenter/Sales'
 import Views from './dataCenter/Views'
 import Trading from './dataCenter/Trading'
 import TotalUsers from './dataCenter/TotalUsers'
+import SalesViewsInfo from './dataCenter/SalesViewsInfo'
 
 export default {
   name: 'Index',
@@ -29,7 +33,8 @@ export default {
     Sales,
     Views,
     Trading,
-    TotalUsers
+    TotalUsers,
+    SalesViewsInfo
   }
 }
 </script>
@@ -37,5 +42,10 @@ export default {
 <style lang="scss" scoped>
 .data-center {
   overflow: hidden;
+  .el-row {
+    & + .el-row {
+      margin-top: 20px;
+    }
+  }
 }
 </style>

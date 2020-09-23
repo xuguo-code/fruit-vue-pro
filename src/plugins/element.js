@@ -16,7 +16,9 @@ import {
   BreadcrumbItem,
   Card,
   Row,
-  Col
+  Col,
+  Tabs,
+  TabPane
 } from 'element-ui'
 let AllComp = {
   Button,
@@ -36,7 +38,9 @@ let AllComp = {
   BreadcrumbItem,
   Card,
   Row,
-  Col
+  Col,
+  Tabs,
+  TabPane
 }
 
 // 注册组件

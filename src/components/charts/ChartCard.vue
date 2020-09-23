@@ -38,8 +38,9 @@ export default {
 .card-top {
   .title {
     margin: 0;
-    font-size: $--font-size-title;
+    font-size: $--font-size-title-sm;
     color: $--color-text-conventional;
+    font-weight: $--font-weight-normal;
   }
 }
 .card-content {
@@ -48,7 +49,7 @@ export default {
     margin: 10px 0;
     color: $--color-text-main;
     font-size: $--font-size-title-lg * 1.25;
-    font-weight: $--font-weight-bolder;
+    font-weight: $--font-weight-bold;
   }
   .content-wrap {
     height: 56px;

@@ -16,6 +16,15 @@ export default {
   name: 'Views',
   computed: {
     line: vm => ({
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'line',
+          lineStyle: {
+            color: '#DCDFE6'
+          }
+        }
+      },
       xAxis: {
         type: 'category',
         boundaryGap: false,
@@ -30,9 +39,20 @@ export default {
         left: 0,
         right: 0
       },
+      dataset: {
+        source: [
+          ['1月', 10],
+          ['2月', 30],
+          ['3月', 25],
+          ['4月', 35],
+          ['5月', 20],
+          ['6月', 40],
+          ['7月', 30],
+          ['8月', 20]
+        ]
+      },
       series: {
         type: 'line',
-        data: [10, 30, 25, 35, 20, 40, 30, 20],
         smooth: true,
         areaStyle: {
           color: vm.$_mixin_theme['--color-primary']
@@ -41,7 +61,8 @@ export default {
           width: 0
         },
         itemStyle: {
-          opacity: 0
+          opacity: 0,
+          color: vm.$_mixin_theme['--color-primary']
         }
       }
     })
