@@ -46,7 +46,7 @@ export default {
     // 返回到首页
     backToHome() {
       const curPath = this.$router?.currentRoute?.path
-      if (curPath !== '/index') {
+      if (curPath !== '/dashboard/index') {
         this.$router.push('/')
       }
     },
