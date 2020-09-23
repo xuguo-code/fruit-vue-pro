@@ -6,16 +6,32 @@
         <h2>配置</h2>
         <section class="option-wrap">
           <div class="option-item">
-            <span>主题模式：</span>
+            <span class="sub-title">菜单栏模式</span>
             <el-radio-group v-model="themeMode" size="small">
-              <el-radio-button v-for="t in themeModes" :key="t" :label="t"></el-radio-button>
+              <el-radio v-for="t in themeModes" :key="t" :label="t"></el-radio>
             </el-radio-group>
           </div>
+          <split-line :margin="20" />
           <div class="option-item">
-            <span>主题色：</span>
-            <el-radio-group v-model="themeColor" size="small">
+            <span class="sub-title">主题色</span>
+            <!-- <el-radio-group v-model="themeColor" size="small">
               <el-radio-button v-for="t in themeKeys" :key="t" :label="t"></el-radio-button>
-            </el-radio-group>
+            </el-radio-group> -->
+            <div class="theme-color" @click="proxyThemeColorClick">
+              <div
+                v-for="t in themeColors"
+                :key="t.key"
+                :data-theme-key="t.key"
+                class="theme-color-item"
+                :style="{ backgroundColor: t.color }"
+              >
+                <svg-icon
+                  v-if="themeColor === t.key"
+                  class="theme-color-selected"
+                  icon-name="hook"
+                />
+              </div>
+            </div>
           </div>
         </section>
         <!-- 开启关闭按钮 -->
@@ -33,10 +49,12 @@ import { themes } from '@/theme'
 export default {
   name: 'OptionsDrawer',
   data() {
-    let themeKeys = themes.map(t => t.key).filter(t => t !== 'dark' && t !== 'light')
+    let themeColors = themes
+      .map(t => ({ key: t.key, color: t['--color-primary'] }))
+      .filter(t => t.key !== 'dark' && t.key !== 'light')
     return {
       drawer: false,
-      themeKeys,
+      themeColors,
       themeModes: ['light', 'dark']
     }
   },
@@ -55,6 +73,14 @@ export default {
       },
       set(color) {
         this.$store.dispatch('app/setThemeColor', color)
+      }
+    }
+  },
+  methods: {
+    proxyThemeColorClick(e) {
+      const themeColorKey = e?.target.dataset?.themeKey
+      if (themeColorKey) {
+        this.themeColor = themeColorKey
       }
     }
   }
@@ -108,16 +134,37 @@ export default {
     border-radius: $--radius-lg 0 0 $--radius-lg;
   }
   .option-wrap {
+    box-sizing: border-box;
     height: 100%;
     width: 100%;
     padding: 10px 30px;
     text-align: left;
     .option-item {
-      display: flex;
-      align-items: center;
-      text-align: left;
       & + .option-item {
         margin: 20px 0 0 0;
+      }
+      .sub-title {
+        display: block;
+        margin: 0 0 20px 0;
+        font-size: $--font-size-base;
+        font-weight: $--font-weight-base;
+        color: $--color-text-conventional;
+      }
+      .theme-color-item {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        vertical-align: middle;
+        width: 20px;
+        height: 20px;
+        border-radius: $--radius-sm;
+        margin: 5px;
+        cursor: pointer;
+        .theme-color-selected {
+          width: 15px;
+          height: 15px;
+          fill: $--color-wihte;
+        }
       }
     }
   }

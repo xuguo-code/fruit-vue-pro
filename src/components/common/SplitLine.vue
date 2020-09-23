@@ -1,10 +1,16 @@
 <template>
-  <div class="split-line" v-bind="$attrs"></div>
+  <div class="split-line" :style="{ margin: `${margin}px 0` }" v-bind="$attrs"></div>
 </template>
 
 <script>
 export default {
-  name: 'SplitLine'
+  name: 'SplitLine',
+  props: {
+    margin: {
+      type: Number,
+      default: 10
+    }
+  }
 }
 </script>
 
@@ -12,7 +18,6 @@ export default {
 .split-line {
   width: 100%;
   height: 1px;
-  margin: 10px 0;
   background: $--color-border-2;
 }
 </style>

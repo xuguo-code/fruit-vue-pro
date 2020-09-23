@@ -29,8 +29,9 @@ function setI18nLang(lang) {
 
 export function loadLangAsync(lang) {
   if (!loadedLanguages.includes(lang)) {
-    return import(/* webpackChunkName: "load-lang" */ `./lang/${lang}.js`).then(lang => {
-      const locale = lang.default
+    console.log(lang)
+    return import(/* webpackChunkName: "load-[request]" */ `./lang/${lang}.js`).then(res => {
+      const locale = res.default
       i18n.setLocaleMessage(lang, locale)
       elementLocale.use(locale.elementLang)
       loadedLanguages.push(lang)
@@ -38,7 +39,7 @@ export function loadLangAsync(lang) {
       return setI18nLang(lang)
     })
   }
-  return setI18nLang(lang)
+  return Promise.resolve(setI18nLang(lang))
 }
 
 export default i18n

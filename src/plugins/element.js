@@ -18,7 +18,8 @@ import {
   Row,
   Col,
   Tabs,
-  TabPane
+  TabPane,
+  Radio
 } from 'element-ui'
 let AllComp = {
   Button,
@@ -40,7 +41,8 @@ let AllComp = {
   Row,
   Col,
   Tabs,
-  TabPane
+  TabPane,
+  Radio
 }
 
 // 注册组件
