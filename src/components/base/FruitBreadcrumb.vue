@@ -7,10 +7,10 @@
           :key="route.title"
           :to="{ path: route.path }"
         >
-          {{ route.title }}
+          {{ $t(route.title) }}
         </el-breadcrumb-item>
         <el-breadcrumb-item v-else :key="route.title">
-          {{ route.title }}
+          {{ $t(route.title) }}
         </el-breadcrumb-item>
       </template>
     </el-breadcrumb>

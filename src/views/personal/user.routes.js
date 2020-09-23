@@ -4,7 +4,7 @@ export default {
   path: 'personal',
   name: 'personal',
   meta: {
-    title: '个人页',
+    title: 'menu.personal',
     icon: 'personal',
     vuex: 'personal'
   },
@@ -17,7 +17,7 @@ export default {
       path: 'index',
       name: 'personalIndex',
       meta: {
-        title: '个人中心'
+        title: 'menu.personal.index'
       },
       component: Index
     }

@@ -4,7 +4,7 @@ export default {
   path: 'dashboard',
   name: 'dashboard',
   meta: {
-    title: '仪表盘',
+    title: 'menu.dashboard',
     icon: 'dashboard',
     roles: ['admin', 'editor']
   },
@@ -17,7 +17,7 @@ export default {
       path: 'index',
       name: 'dashboardIndex',
       meta: {
-        title: '数据中心'
+        title: 'menu.dashboard.index'
       },
       component: Index
     }

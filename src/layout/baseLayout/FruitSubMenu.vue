@@ -4,14 +4,14 @@
     <template v-if="menuInfo.meta.isLeaf || !menuInfo.children">
       <el-menu-item :key="menuInfo.name" :index="menuInfo.path" @click="jumpTo(menuInfo.path)">
         <svg-icon v-if="menuInfo.meta.icon" :icon-name="menuInfo.meta.icon" />
-        <span>{{ menuInfo.meta.title }}</span>
+        <span>{{ $t(menuInfo.meta.title) }}</span>
       </el-menu-item>
     </template>
     <!-- 包含子项目 -->
     <el-submenu v-else :key="menuInfo.path" :index="menuInfo.path">
       <template slot="title">
         <svg-icon v-if="menuInfo.meta.icon" :icon-name="menuInfo.meta.icon" />
-        <span>{{ menuInfo.meta.title }}</span>
+        <span>{{ $t(menuInfo.meta.title) }}</span>
       </template>
       <fruit-sub-menu
         v-for="childMenu in menuInfo.children"

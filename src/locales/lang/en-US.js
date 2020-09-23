@@ -8,7 +8,12 @@ const locale = {
   // 侧边配置栏
   'drawer.title': 'Setting',
   'drawer.themeMode': 'Menu Theme Mode',
-  'drawer.themeColor': 'Theme Color'
+  'drawer.themeColor': 'Theme Color',
+  // 侧边菜单
+  'menu.dashboard': 'Dashboard',
+  'menu.dashboard.index': 'Data Center',
+  'menu.personal': 'Personal',
+  'menu.personal.index': 'Personal Center'
 }
 
 export default {
