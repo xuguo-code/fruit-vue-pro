@@ -190,17 +190,10 @@ export default {
     background-color: $--color-border-4;
   }
   .el-tabs__nav {
-    .el-tabs__active-bar {
-      background-color: $--color-primary;
-    }
     .el-tabs__item {
       height: 50px;
-      color: $--color-text-main;
       font-size: $--font-size-title-sm;
       font-weight: $--font-weight-normal;
-      &.is-active {
-        color: $--color-primary;
-      }
     }
   }
 }

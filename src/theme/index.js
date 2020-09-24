@@ -10,6 +10,7 @@ function updateTheme(themeKey = 'light') {
   return new Promise((resolve, reject) => {
     const theme = themes.find(t => t.key === themeKey)
     if (theme) {
+      updateElementTheme(themeKey)
       for (const key in theme) {
         if (buildInKeys.includes(key)) {
           continue
@@ -24,6 +25,13 @@ function updateTheme(themeKey = 'light') {
       reject()
     }
   })
+}
+
+function updateElementTheme(key) {
+  const el = document.querySelector(`#element-theme`)
+  if (el) {
+    el.href = `${process.env.BASE_URL}themes/${key}/index.css?t=${new Date().getTime()}`
+  }
 }
 
 export { themes, updateTheme }

@@ -8,7 +8,6 @@
         :collapse="isCollapse"
         :background-color="$_mixin_theme['--color-background']"
         :text-color="$_mixin_theme['--color-text']"
-        :active-text-color="$_mixin_theme['--color-primary']"
       >
         <fruit-sub-menu v-for="menu in menus" :key="menu.path" :menu-info="menu" />
       </el-menu>
