@@ -10,7 +10,7 @@ function updateTheme(themeKey = 'light') {
   return new Promise((resolve, reject) => {
     const theme = themes.find(t => t.key === themeKey)
     if (theme) {
-      updateElementTheme(themeKey)
+      !['light', 'dark'].includes(themeKey) && updateElementTheme(themeKey)
       for (const key in theme) {
         if (buildInKeys.includes(key)) {
           continue
