@@ -29,6 +29,11 @@
                 />
               </div>
             </div>
+            <split-line :margin="20" />
+            <div class="option-item">
+              <span class="sub-title">{{ $t('drawer.isTab') }}</span>
+              <el-switch v-model="isTab" active-text="开启" inactive-text="关闭"></el-switch>
+            </div>
           </div>
         </section>
         <!-- 开启关闭按钮 -->
@@ -70,6 +75,14 @@ export default {
       },
       set(color) {
         this.$store.dispatch('app/setThemeColor', color)
+      }
+    },
+    isTab: {
+      get() {
+        return this.$store.getters['app/isTab'] || false
+      },
+      set(is) {
+        this.$store.commit('app/setTab', is)
       }
     }
   },

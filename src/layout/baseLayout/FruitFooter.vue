@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss" scoped>
 .footer-wrap {
-  padding: 20px 0 0 0;
+  padding: 50px 0 40px 0;
   text-align: center;
   font-size: $--font-size-base;
   .link {

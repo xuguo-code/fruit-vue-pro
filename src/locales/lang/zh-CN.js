@@ -17,6 +17,7 @@ const locale = {
   'drawer.title': '配置',
   'drawer.themeMode': '菜单栏模式',
   'drawer.themeColor': '主题色',
+  'drawer.isTab': 'Tab模式',
   ...locales
 }
 

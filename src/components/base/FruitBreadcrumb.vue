@@ -18,11 +18,13 @@
 </template>
 
 <script>
+import { getPurePathname } from '@/utils/common'
+
 export default {
   name: 'FruitBreadcrumb',
   computed: {
     breadcrumbData: vm => vm.handleOfBreadcrumb(vm.$route.matched || []),
-    curPath: vm => vm.$route.fullPath
+    curPath: vm => getPurePathname(vm.$route.fullPath)
   },
   methods: {
     handleOfBreadcrumb(matched) {

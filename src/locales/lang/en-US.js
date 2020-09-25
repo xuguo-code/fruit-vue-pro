@@ -17,6 +17,7 @@ const locale = {
   'drawer.title': 'Setting',
   'drawer.themeMode': 'Menu Theme Mode',
   'drawer.themeColor': 'Theme Color',
+  'drawer.isTab': 'Tab Mode',
   ...locales
 }
 

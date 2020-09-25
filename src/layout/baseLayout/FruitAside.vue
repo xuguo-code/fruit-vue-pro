@@ -33,6 +33,7 @@
 import { mapGetters } from 'vuex'
 import FruitSubMenu from './FruitSubMenu'
 import { getMemuDataFromRoutes } from '@/router/handleOfRouter'
+import { getPurePathname } from '@/utils/common'
 
 export default {
   name: 'FruitAside',
@@ -49,7 +50,7 @@ export default {
       isCollapse: 'menuIsCollapse',
       routes: 'routes'
     }),
-    activePath: vm => vm.$route.fullPath
+    activePath: vm => getPurePathname(vm.$route.fullPath)
   },
   mounted() {
     this.menus = getMemuDataFromRoutes(this.routes)
@@ -71,6 +72,7 @@ export default {
   text-align: left;
   background: $--color-background;
   box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
+  z-index: 1001;
   .aside-menu-wrap {
     flex: 1 1 0%;
     width: auto;

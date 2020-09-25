@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import { RootRouteFullPath } from '@/router/config.routes'
+
 const locales = ['zh-CN', 'en-US']
 const localesLabel = {
   'zh-CN': '简体中文',
@@ -46,7 +48,7 @@ export default {
     // 返回到首页
     backToHome() {
       const curPath = this.$router?.currentRoute?.path
-      if (curPath !== '/dashboard/index') {
+      if (curPath !== RootRouteFullPath) {
         this.$router.push('/')
       }
     },

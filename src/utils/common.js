@@ -21,3 +21,12 @@ export function composeVueUse(Vue) {
     })
   }
 }
+
+/**
+ * 获取 pathname
+ */
+const fakeHost = 'http://a.com'
+export function getPurePathname(fullPath) {
+  const URI = new URL(fullPath, fakeHost)
+  return URI.pathname
+}

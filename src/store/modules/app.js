@@ -1,5 +1,5 @@
 import storage from 'store'
-import { APP_LANG, APP_THEME_COLOR, APP_THEME_MODE } from '@/core/buildKey'
+import { APP_LANG, APP_THEME_COLOR, APP_THEME_MODE, APP_IS_TAB } from '@/core/buildKey'
 import { updateTheme } from '@/theme'
 import { ConstRoutes } from '@/router/config.routes'
 import { loadLangAsync } from '@/locales'
@@ -9,7 +9,8 @@ let state = {
   themeMode: 'light',
   themeColor: 'blue',
   menuIsCollapse: false,
-  lang: 'zh-CN'
+  lang: 'zh-CN',
+  isTab: false
 }
 
 let mutations = {
@@ -30,6 +31,10 @@ let mutations = {
   setColor(state, color) {
     storage.set(APP_THEME_COLOR, color)
     return (state.themeColor = color)
+  },
+  setTab(state, mode) {
+    storage.set(APP_IS_TAB, mode)
+    return (state.isTab = mode)
   }
 }
 
@@ -64,7 +69,8 @@ let getters = {
   themeColor: state => state.themeColor,
   menuIsCollapse: state => state.menuIsCollapse,
   locale: state => state.locale,
-  lang: state => state.lang
+  lang: state => state.lang,
+  isTab: state => state.isTab
 }
 
 export default {

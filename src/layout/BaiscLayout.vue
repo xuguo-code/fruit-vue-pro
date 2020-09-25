@@ -7,14 +7,7 @@
       <fruit-aside />
       <!-- 主要部分 -->
       <section class="content-wrap">
-        <!-- main 头部 -->
-        <fruit-main-header />
-        <el-main>
-          <!-- 内容区域 -->
-          <router-view />
-          <!-- 尾部 -->
-        </el-main>
-        <fruit-footer />
+        <component :is="$_mixin_isTab ? 'TabContent' : 'NoTabContent'" />
       </section>
     </el-container>
   </div>
@@ -22,17 +15,17 @@
 
 <script>
 import FruitHeader from './baseLayout/FruitHeader'
-import FruitFooter from './baseLayout/FruitFooter'
 import FruitAside from './baseLayout/FruitAside'
-import FruitMainHeader from './baseLayout/FruitMainheader'
+import NoTabContent from './baseLayout/NoTabContent'
+import TabContent from './baseLayout/TabContent'
 
 export default {
   name: 'BaiscLayout',
   components: {
     FruitHeader,
     FruitAside,
-    FruitFooter,
-    FruitMainHeader
+    NoTabContent,
+    TabContent
   }
 }
 </script>
@@ -46,15 +39,6 @@ export default {
   right: 0;
   .content-wrap {
     flex: 1;
-    padding: 0 20px 20px 20px;
-    overflow: hidden auto;
-    background: #f0f2f5;
-    .el-main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0;
-      border-radius: $--radius-sm;
-    }
   }
 }
 </style>

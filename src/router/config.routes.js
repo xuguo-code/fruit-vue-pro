@@ -1,6 +1,9 @@
 // 未登录可访问 白名单
 const WihteList = ['/login', '/', '/index']
 
+// 根路由 fullPath
+const RootRouteFullPath = '/dashboard/index'
+
 // 静态路由
 const ConstRoutes = [
   {
@@ -40,4 +43,4 @@ const WildcardRoute = [
   }
 ]
 
-export { WildcardRoute, WihteList, ConstRoutes }
+export { WildcardRoute, WihteList, ConstRoutes, RootRouteFullPath }
