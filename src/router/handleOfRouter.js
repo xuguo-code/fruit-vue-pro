@@ -125,7 +125,7 @@ export const addProgressToRouter = () => router => {
  */
 export const dynamicVuexRegisterInRouter = () => {
   return router => {
-    router.beforeEach((to, from, next) => {
+    router.beforeEach(async (to, from, next) => {
       // 查找最先匹配的含有的vuex模块名
       let vuexModuleName = null
       for (let i = 0; i < to.matched.length; i++) {
@@ -134,9 +134,11 @@ export const dynamicVuexRegisterInRouter = () => {
         }
       }
       if (vuexModuleName && !store.hasModule(vuexModuleName)) {
-        let vuex = null
         try {
-          vuex = require(`@/store/modules/${vuexModuleName}.js`).default
+          const m = await import(
+            /* webpackChunkName: "vuex-[request]" */ `../store/modules/${vuexModuleName}.js`
+          )
+          let vuex = m.default
           // 动态注册vuex
           store.registerModule(vuexModuleName, vuex)
         } catch (error) {
