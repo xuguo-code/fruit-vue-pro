@@ -8,7 +8,8 @@ export default {
         ...mapGetters('app', {
           $_mixin_currentLang: 'lang',
           $_mixin_menuIsCollapse: 'menuIsCollapse',
-          $_mixin_isTab: 'isTab'
+          $_mixin_isTab: 'isTab',
+          $_mixin_isTopMenu: 'isTopMenu'
         })
       }
     })

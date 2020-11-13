@@ -1,16 +1,24 @@
 import storage from 'store'
-import { APP_LANG, APP_THEME_COLOR, APP_THEME_MODE, APP_IS_TAB } from '@/core/buildKey'
+import {
+  APP_LANG,
+  APP_THEME_COLOR,
+  APP_THEME_MODE,
+  APP_IS_TAB,
+  APP_IS_TOP_MENU
+} from '@/core/buildKey'
 import { updateTheme } from '@/theme'
 import { ConstRoutes } from '@/router/config.routes'
 import { loadLangAsync } from '@/locales'
 
 let state = {
   routes: ConstRoutes,
+  topMenuRoutes: [],
   themeMode: 'light',
   themeColor: 'blue',
   menuIsCollapse: false,
   lang: 'zh-CN',
-  isTab: false
+  isTab: false,
+  isTopMenu: false
 }
 
 let mutations = {
@@ -35,6 +43,13 @@ let mutations = {
   setTab(state, mode) {
     storage.set(APP_IS_TAB, mode)
     return (state.isTab = mode)
+  },
+  setTopMenu(state, is) {
+    storage.set(APP_IS_TOP_MENU, is)
+    return (state.isTopMenu = is)
+  },
+  setTopMenuRoutes(state, routes) {
+    return (state.topMenuRoutes = routes)
   }
 }
 
@@ -70,7 +85,9 @@ let getters = {
   menuIsCollapse: state => state.menuIsCollapse,
   locale: state => state.locale,
   lang: state => state.lang,
-  isTab: state => state.isTab
+  isTab: state => state.isTab,
+  isTopMenu: state => state.isTopMenu,
+  topMenuRoutes: state => state.topMenuRoutes
 }
 
 export default {

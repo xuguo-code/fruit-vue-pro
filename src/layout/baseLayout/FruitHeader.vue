@@ -4,6 +4,9 @@
       <img :src="logoImg" />
       <h2>Fruit-vue-pro</h2>
     </div>
+    <div class="center">
+      <top-menu />
+    </div>
     <div class="right">
       <div class="i18n-wrap">
         <el-dropdown trigger="hover" @command="changeLang">
@@ -27,6 +30,7 @@
 </template>
 
 <script>
+import TopMenu from './TopMenu'
 import { RootRouteFullPath } from '@/router/config.routes'
 
 const locales = ['zh-CN', 'en-US']
@@ -37,6 +41,9 @@ const localesLabel = {
 
 export default {
   name: 'FruitHeader',
+  components: {
+    TopMenu
+  },
   data() {
     return {
       logoImg: require('@/assets/logo.png'),
@@ -90,6 +97,12 @@ export default {
       margin: 0;
       line-height: 60px;
     }
+  }
+  .center {
+    padding: 0 30px;
+    box-sizing: border-box;
+    flex: 1;
+    overflow: auto hidden;
   }
   .right {
     .i18n-wrap {
